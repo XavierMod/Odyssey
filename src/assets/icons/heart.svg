@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="10px" viewBox="0 0 12 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>heart</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="home" transform="translate(-250.000000, -309.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="Group-5" transform="translate(16.000000, 155.000000)">
+                <g id="Group-3" transform="translate(13.000000, 144.000000)">
+                    <g id="Group-4" transform="translate(220.000000, 0.000000)">
+                        <g id="heart" transform="translate(0.000000, 8.000000)">
+                            <rect id="Rectangle" opacity="0" x="0" y="0" width="14" height="14"></rect>
+                            <path d="M7,12 C6.84053953,12.0008942 6.68727311,11.93951 6.57405695,11.8293974 L1.91268024,7.25280429 C0.695773252,6.04709812 0.695773252,4.1054528 1.91268024,2.89974663 C3.13960193,1.70008446 5.12516495,1.70008446 6.35208663,2.89974663 L7,3.53505775 L7.64791337,2.89974663 C8.87483505,1.70008446 10.8603981,1.70008446 12.0873198,2.89974663 C13.3042267,4.1054528 13.3042267,6.04709812 12.0873198,7.25280429 L7.42594305,11.8293974 C7.31272689,11.93951 7.15946047,12.0008942 7,12 Z" id="Path"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

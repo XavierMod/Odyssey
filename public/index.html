@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="499959295765-ao1389k117f5pl3bo8vu16dgm5i3uvj5.apps.googleusercontent.com"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
@@ -25,6 +25,11 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <meta
+      name="google-signin-client_id"
+      content="your-client-ID.apps.googleusercontent.com"
+    />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -39,5 +44,17 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      function initGoogle() {
+        window.gapi.load('auth2', function() {
+           window.gapi.auth2.init({
+             client_id:
+               '499959295765-ao1389k117f5pl3bo8vu16dgm5i3uvj5.apps.googleusercontent.com',
+           });
+       });
+     }
+   </script>
+   <script src="https://apis.google.com/js/platform.js" onload="initGoogle()"></script>
+   
   </body>
 </html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="15px" viewBox="0 0 12 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>bookmark-outline</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bookmark-outline" transform="translate(-4.000000, -3.000000)" fill-rule="nonzero">
+            <rect id="Rectangle" fill="#000000" opacity="0" x="0" y="0" width="20" height="20"></rect>
+            <path d="M13.9888804,3 C14.4997621,3.00873396 14.9861654,3.21579802 15.3410467,3.57562332 C15.6959281,3.93544861 15.8902054,4.41854781 15.8811238,4.91860465 L16,17.0946844 C16.0028842,17.3908882 15.844457,17.6662188 15.5841349,17.8172757 C15.3215958,17.9656419 14.9981343,17.9656419 14.7355953,17.8172757 L9.89891938,15.192691 L5.41014474,17.8754153 C5.27722291,17.9480896 5.12934293,17.9906623 4.97738953,18 C4.50875403,18 4.1288499,17.6281435 4.1288499,17.1694352 L4.00156896,4.99335548 C3.98093205,4.49403131 4.16456502,4.00726457 4.51178442,3.64089725 C4.85900382,3.27452992 5.34114305,3.05880947 5.85138535,3.04152824 L13.9888804,3 Z" id="Combined-Shape" fill="#FF4E00"></path>
+        </g>
+    </g>
+</svg>
