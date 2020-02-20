@@ -26,13 +26,13 @@ const PostPreview = (props) => {
     console.log(generateRoute);
 
     return (
-        <Link to={generateRoute}>
         <PostPreviewWrapper>
-            <PostPreviewImage image={dummyImage} />
             <PostPreviewHeader {...props.data} />
+            <Link to={generateRoute}>
+            <PostPreviewImage image={dummyImage} />
             <PostPreviewFooter {...props.data} />
+            </Link>
         </PostPreviewWrapper>
-        </Link>
     )
 }
 

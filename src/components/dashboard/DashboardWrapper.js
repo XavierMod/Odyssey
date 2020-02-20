@@ -5,6 +5,7 @@ import BottomBar from './BottomBar';
 import HomeFeed from './HomeFeed/HomeFeed';
 import Profile from './Profile/Profile';
 import Notifications from './Notifications/Notifications';
+import Search from './Search/Search'
 
 class DashboardWrapper extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class DashboardWrapper extends Component {
                 <Route path={this.props.match.url + '/home'} component={HomeFeed}/>
                 <Route path={this.props.match.url + '/profile'} component={Profile}/>
                 <Route path={this.props.match.url + '/notifications'} component={Notifications}/>
+                <Route path={this.props.match.url + '/search'} component={Search}/>
                 <BottomBar />
             </React.Fragment>
         );

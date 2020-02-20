@@ -26,6 +26,8 @@ const BottomBarWrapper = styled.div`
         align-items: center;
         text-align: center;
         height: 100%;
+        max-width: 600px;
+        margin: auto;
     }
 `;
 
@@ -58,7 +60,7 @@ class BottomBar extends Component {
                         </Link>
                     </BottomBarTab>
                     <BottomBarTab>
-                        <Link to="/dashboard/homes">
+                        <Link to="/dashboard/search">
                             <img src={IconSearch}/>
                         </Link>
                     </BottomBarTab>
