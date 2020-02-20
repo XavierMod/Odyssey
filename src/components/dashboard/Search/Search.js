@@ -15,7 +15,6 @@ const LogoWrapper = styled.div`
 `;
 
 const SearchInputWrapper = styled.div`
-    background-color: black;
     margin-top: 20px;
     padding: 20px 0;
     display: flex;
@@ -27,20 +26,17 @@ const SearchInputWrapper = styled.div`
 
 const INPUT = styled.input`
     width: 80%;
-    background-color: #212121;
     border-radius: 2px;
-    border: 1px solid #212121;
+    border: 1px solid black;
     height: 30px;
     font-size: 16px;
     padding: 5px;
-    color: grey;
+    color: black;
     font-family: ${odysseySettings.bodyFont};
     padding-left: 20px;
 `;
 
 const SearchOptions = styled.div`
-    background-color: black;
-    color: white;
     max-width: 600px;
     margin: auto;
 
@@ -63,7 +59,7 @@ const SearchOptions = styled.div`
 `;
 
 const LinkStatus = styled.span`
-    background-color: white;
+    background-color: black;
     width: 100%;
     height: 2px;
     position: absolute;
@@ -71,10 +67,21 @@ const LinkStatus = styled.span`
     left: 0;
 `;
 
+const SearchResultsWrapper = styled.div`
+    background-color: black;
+    height: 400px;
+`;
+
 class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            activated: ''
+        }
+    }
+
+    activateOption = (option) => {
+        this.setState({activated: option})
     }
 
     render() {
@@ -86,11 +93,14 @@ class Search extends Component {
                 </SearchInputWrapper>
                 <SearchOptions>
                     <ul>
-                        <li>Posts<LinkStatus></LinkStatus></li>
+                        <li>Posts{this.state.activated == 'posts' ? <LinkStatus></LinkStatus> : null}</li>
                         <li>Accounts</li>
                         <li>Tags</li>
                     </ul>
                 </SearchOptions>
+                <SearchResultsWrapper>
+
+                </SearchResultsWrapper>
             </SearchWrapper>
         );
     }
