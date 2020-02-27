@@ -19,6 +19,34 @@ class UsersProjects extends Component {
                 user: 'pepmolina12',
                 slug: 'test-two',
                 postID: 'opq76sjnhB'
+            },
+            {
+                title: 'Test1',
+                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate cursus metus, non aliquam sapien. Sed dui urna, maximus sed metus ac, ultrices luctus leo. Donec vel libero semper, tristique nibh',
+                user: 'xaviermod21',
+                slug: 'test-one',
+                postID: 'hjd8uyUyhj'
+            },
+            {
+                title: 'Test2',
+                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate cursus metus, non aliquam sapien. Sed dui urna, maximus sed metus ac, ultrices luctus leo. Donec vel libero semper, tristique nibh',
+                user: 'pepmolina12',
+                slug: 'test-two',
+                postID: 'opq76sjnhB'
+            },
+            {
+                title: 'Test1',
+                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate cursus metus, non aliquam sapien. Sed dui urna, maximus sed metus ac, ultrices luctus leo. Donec vel libero semper, tristique nibh',
+                user: 'xaviermod21',
+                slug: 'test-one',
+                postID: 'hjd8uyUyhj'
+            },
+            {
+                title: 'Test2',
+                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate cursus metus, non aliquam sapien. Sed dui urna, maximus sed metus ac, ultrices luctus leo. Donec vel libero semper, tristique nibh',
+                user: 'pepmolina12',
+                slug: 'test-two',
+                postID: 'opq76sjnhB'
             }
         ],
     }

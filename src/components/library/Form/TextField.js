@@ -3,6 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import styled from 'styled-components';
 import { odysseySettings } from '../../../config/theme';
 import Checkmark from '../../../assets/icons/checkmark.svg';
+import * as FormServices from '../../../services/FormServices';
+import NotificationField from '../../library/Form/NotificationField';
 
 const TextFieldWrapper = styled.div`
     display: block;
@@ -61,53 +63,69 @@ class BasicTextFields extends Component {
         }
     }
 
+    validateEmail = ( input ) => {
+        if (FormServices.validateEmail(input.value)) {
+            this.setState({validationIcon: true})
+        } else {
+            this.setState({validationIcon: false})
+        }
+    }
+
+    validatePassword = ( input ) => {
+        var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+        var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+        var okRegex = new RegExp("(?=.{6,}).*", "g");
+
+        if (input.value.match(strongRegex)) {
+            this.setState({passwordStrength: 'Password strength: NASA level!'})
+        } else if (input.value.match(mediumRegex)) {
+            this.setState({passwordStrength: 'Password strength: Medium'})
+        } else if (input.value.match(okRegex)) {
+            this.setState({passwordStrength: 'Password strength: OK'})
+        } else {
+            this.setState({passwordStrength: 'Password strength: None'})
+        }
+    }
+
     render() {
-        const validateEmail = ( input ) => {
-            var email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-      
-            if (input.value.match(email)) {
-                this.setState({validationIcon: true})
-            } else {
-                this.setState({validationIcon: false})
-            }
-        }
-
-        const validatePassword = ( input ) => {
-            var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-            var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-            var okRegex = new RegExp("(?=.{6,}).*", "g");
-
-            if (input.value.match(strongRegex)) {
-                this.setState({passwordStrength: 'Password strength: NASA level!'})
-            } else if (input.value.match(mediumRegex)) {
-                this.setState({passwordStrength: 'Password strength: Medium'})
-            } else if (input.value.match(okRegex)) {
-                this.setState({passwordStrength: 'Password strength: OK'})
-            } else {
-                this.setState({passwordStrength: 'Password strength: None'})
-            }
-        }
-
         if (this.props.fieldType == 'email') {
             return (
                 <TextFieldWrapper>
                     <ContentWrapper>
-                        {this.state.validationIcon ? <CheckIcon src={Checkmark} /> : null}
-                        <TextField required onChange={(ev) => validateEmail(ev.target)} id="standard-basic" type={this.props.type} label={this.props.label} />
+                        <div style={{position: 'relative'}}>
+                            <TextField required onChange={(ev) => {
+                                this.validateEmail(ev.target);
+                                this.props.onChange(ev.target);
+                            }} id="standard-basic" type={this.props.type} label={this.props.label} />
+                            {this.state.validationIcon ? <CheckIcon src={Checkmark} /> : null}
+                        </div>
+                        {this.props.showError ? <NotificationField body={this.props.bodyError} /> : null}
                     </ContentWrapper>
                 </TextFieldWrapper>
                 );
         } else if (this.props.fieldType == 'password') {
             return (
                 <TextFieldWrapper>
-                    <TextField inputProps={{ maxLength: 20, minLength: 6 }} required onChange={(ev) => validatePassword(ev.target)} id="standard-basic" type={this.props.type} label={this.props.label} />
-                    <br/><PasswordStrength>{this.state.passwordStrength}</PasswordStrength>
+                    <ContentWrapper>
+                        <TextField 
+                            inputProps={{ maxLength: 20, minLength: 6 }} required 
+                            onChange={(ev) => {
+                            this.props.onChange(ev.target);
+                            this.validatePassword(ev.target)}}
+                            id="standard-basic" type="password" 
+                            label={this.props.label} />
+                        <br/>{this.props.hidePasswordStrength ? null : <PasswordStrength>{this.state.passwordStrength}</PasswordStrength>}
+                        {this.props.showError ? <NotificationField body={this.props.bodyError} /> : null}
+                    </ContentWrapper>
                 </TextFieldWrapper>
                 );
         } else {
             return (
                 <TextFieldWrapper>
-                    <TextField inputProps={{ maxLength: 20, minLength: 6 }} id="standard-basic" required type={this.props.type} label={this.props.label} />
+                    <ContentWrapper>
+                        <TextField onChange={(ev) => this.props.onChange(ev.target)} inputProps={{ maxLength: 20, minLength: 6 }} id="standard-basic" required type={this.props.type} label={this.props.label} />
+                        {this.props.showError ? <NotificationField body={this.props.bodyError} /> : null}
+                    </ContentWrapper>
                 </TextFieldWrapper>
                 );
         }

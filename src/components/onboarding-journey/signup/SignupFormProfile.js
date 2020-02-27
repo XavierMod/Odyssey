@@ -1,12 +1,14 @@
+// Signup Form adding optional profile information
+
 import React, { Component } from 'react';
 import styled, {css} from 'styled-components';
-import HeaderLogo from '../library/Headers/HeaderLogo';
+import HeaderLogo from '../../library/Headers/HeaderLogo';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import TextField from '../../components/library/Form/TextField';
-import Button from '../library/Buttons/Button';
-import TextArea from '../library/Form/TextArea';
-import FileUpload from '../library/Form/FileUpload';
+import TextField from '../../library/Form/TextField';
+import Button from '../../library/Buttons/Button';
+import TextArea from '../../library/Form/TextArea';
+import FileUpload from '../../library/Form/FileUpload';
 
 const FORM = styled.form`
     text-align: center;
@@ -24,7 +26,7 @@ const P = styled.p`
     padding: 0 30px;
 `;
 
-class SignupJourneyNext extends Component {
+class SignupFormProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {}
@@ -44,4 +46,4 @@ class SignupJourneyNext extends Component {
     }
 };
 
-export default SignupJourneyNext;
+export default SignupFormProfile;

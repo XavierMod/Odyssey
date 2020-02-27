@@ -16,7 +16,7 @@ const ButtonWrapper = styled.div`
     padding: 15px 0;
     color: black;
     transition: all ease 0.4s;
-
+        
     &:hover {
         background-color: ${odysseySettings.primaryColor};
         color: ${odysseySettings.backgroundColor};
@@ -112,7 +112,7 @@ const Button = ( props ) => {
 
     if ( props.variant == 'primary' ) {
         return (
-            <div>
+            <div style={props.disabled ? { pointerEvents: 'none', opacity: '0.6' } : null} onClick={props.onClick}>
                 <Link to={props.link}>
                     <ButtonWrapper className="buttonPrimary">
                         <span>{props.body}</span>

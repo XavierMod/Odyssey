@@ -1,11 +1,12 @@
+// Main Signup component containing sign up options
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import HeaderLogo from '../library/Headers/HeaderLogo';
-import Button from '../library/Buttons/Button';
+import HeaderLogo from '../../library/Headers/HeaderLogo';
+import Button from '../../library/Buttons/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import GoogleSignin from '../library/Buttons/GoogleSignIn';
-
+import GoogleSignin from '../../library/Buttons/GoogleSignIn';
 
 const MainWrapper = styled.div`
     max-width: 1200px;
