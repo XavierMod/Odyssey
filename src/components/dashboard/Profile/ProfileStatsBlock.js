@@ -27,8 +27,8 @@ class ProfileStatsBlock extends Component {
     render() {
         return (
             <ProfileStatsBlockWrapper>
-                <span>312</span>
-                <p>Followers</p>
+                <span>{this.props.top}</span>
+                <p>{this.props.bottom}</p>
             </ProfileStatsBlockWrapper>
         );
     }

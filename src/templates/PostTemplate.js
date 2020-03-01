@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Logo from '../assets/odyssey/odyssey-logo.svg';
+
 const Header = styled.div`
     background-color: white;
     width: 100%;
@@ -73,38 +74,25 @@ const PostBody = styled.p`
 
 const PostTemplate = (props) => {
 
-    const {title, desc, user} = props.data;
+    const {titlePost, descPost, nameUser, postText} = props.data;
 
-    console.log(props);
+    console.log(props.data);
+
+    const goBack = () => {
+        window.history.back();
+    }
 
     return (
         <React.Fragment>
             <Header>
-                <SVG><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg></SVG>
+                <SVG><svg onClick={goBack} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg></SVG>
                 <img src={Logo} />
             </Header>
             <PostWrapper>
                 <FeaturedImage src="https://picsum.photos/1920/1080" />
-                <PostTitle>{title}</PostTitle>
-                <PostSubtitle>This is a subtitle</PostSubtitle>
-                <PostBody>{desc}</PostBody>
-                <PostBody>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean augue erat, vehicula a sagittis vel, semper nec ante. Donec bibendum volutpat massa nec egestas. Sed eu rutrum sem, non tincidunt dolor. Vestibulum turpis nunc, suscipit sit amet congue id, elementum sed justo. Integer vel nunc pulvinar, lobortis mauris id, finibus orci. Phasellus ultrices, neque id sollicitudin finibus, lacus massa vehicula arcu, eu viverra arcu massa consectetur ligula. Ut egestas tincidunt lectus.
-
-                </PostBody>
-
-                <PostBody>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean augue erat, vehicula a sagittis vel, semper nec ante. Donec bibendum volutpat massa nec egestas. Sed eu rutrum sem, non tincidunt dolor. Vestibulum turpis nunc, suscipit sit amet congue id, elementum sed justo. Integer vel nunc pulvinar, lobortis mauris id, finibus orci. Phasellus ultrices, neque id sollicitudin finibus, lacus massa vehicula arcu, eu viverra arcu massa consectetur ligula. Ut egestas tincidunt lectus.
-
-                </PostBody>
-
-                <PostBody>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean augue erat, vehicula a sagittis vel, semper nec ante. Donec bibendum volutpat massa nec egestas. Sed eu rutrum sem, non tincidunt dolor. Vestibulum turpis nunc, suscipit sit amet congue id, elementum sed justo. Integer vel nunc pulvinar, lobortis mauris id, finibus orci. Phasellus ultrices, neque id sollicitudin finibus, lacus massa vehicula arcu, eu viverra arcu massa consectetur ligula. Ut egestas tincidunt lectus.
-
-                </PostBody>
+                <PostTitle>{titlePost}</PostTitle>
+                <PostSubtitle>{descPost}</PostSubtitle>
+                <PostBody>{postText}</PostBody>
             </PostWrapper>
         </React.Fragment>
     )

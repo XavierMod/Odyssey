@@ -54,7 +54,8 @@ class SigninForm extends Component {
               if (response.data.id == 'wrong-password') {
                 this.setState({errorLogin: {isError: true, bodyError: response.data.message}})
               } else if (response.data.id == 'login-success') {
-                UserToken('set', response.data.message);
+                UserToken('set', response.data.message)
+                this.props.history.push('/dashboard/home/');
               }
           })
           .catch(function (error) {

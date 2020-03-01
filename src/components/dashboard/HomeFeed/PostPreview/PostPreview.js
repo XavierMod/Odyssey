@@ -5,6 +5,7 @@ import PostPreviewHeader from './PostPreviewHeader';
 import { odysseySettings } from '../../../../config/theme';
 import PostPreviewFooter from './PostPreviewFooter';
 import PostTemplate from '../../../../templates/PostTemplate';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,13 +23,10 @@ const PostPreviewWrapper = styled.div`
 `;
 
 const PostPreview = (props) => {
-    const generateRoute = "/user/" + props.data.user + "/" + props.data.slug + "/" + props.data.postID;
-    console.log(generateRoute);
-
     return (
         <PostPreviewWrapper>
-            <PostPreviewHeader {...props.data} />
-            <Link to={generateRoute}>
+            <PostPreviewHeader />
+            <Link to={"/user/" + props.data.nameUser + "/" + props.data.slugPost}>
             <PostPreviewImage image={dummyImage} />
             <PostPreviewFooter {...props.data} />
             </Link>

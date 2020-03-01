@@ -22,35 +22,18 @@ const BlockInfo = styled.div`
 `;
 
 class PostsBlock extends Component {
-    state = {
-        projects: [
-            {
-                title: 'Test1',
-                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate cursus metus, non aliquam sapien. Sed dui urna, maximus sed metus ac, ultrices luctus leo. Donec vel libero semper, tristique nibh',
-                user: 'xaviermod21',
-                slug: 'test-one',
-                postID: 'hjd8uyUyhj'
-            },
-            {
-                title: 'Test2',
-                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate cursus metus, non aliquam sapien. Sed dui urna, maximus sed metus ac, ultrices luctus leo. Donec vel libero semper, tristique nibh',
-                user: 'pepmolina12',
-                slug: 'test-two',
-                postID: 'opq76sjnhB'
-            }
-        ],
-    }
-
+    state = {}
 
     render() {
+        console.log(this.props);
         return (
             <PostsBlockWrapper>
                 <BlockInfo>
                     <MainTitle body="Today's Odysseys"/>
                     <p>29 Oct 2019</p>
                 </BlockInfo>
-                {this.state.projects.map((el, ind) => {
-                    return <PostPreview data={el} />
+                {this.props.posts.map((el, ind) => {
+                    return <PostPreview postsLength={this.props.posts.length} data={el} />
                 })}
             </PostsBlockWrapper>
         );

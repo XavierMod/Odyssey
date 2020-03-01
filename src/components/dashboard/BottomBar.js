@@ -3,7 +3,8 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import { odysseySettings } from '../../config/theme';
 import { Link } from 'react-router-dom';
-
+import UserToken from '../../services/UserToken';
+ 
 import IconHome from '../../assets/icons/bar/bottom-bar-home.svg';
 import IconOdyssey from '../../assets/icons/bar/bottom-bar-odyssey.png';
 import IconPlusCircle from '../../assets/icons/bar/bottom-bar-plus-circle.svg';
@@ -19,6 +20,7 @@ const BottomBarWrapper = styled.div`
     width: 100%;
     height: 50px;
     background-color: white;
+    z-index: 5;
 
     ul {
         display: flex;
@@ -66,7 +68,7 @@ class BottomBar extends Component {
                     </BottomBarTab>
                     <BottomBarTab><img className="Add" src={IconPlusCircle}/></BottomBarTab>
                     <BottomBarTab>
-                        <Link to="/dashboard/profile">
+                        <Link to={"/user/" + UserToken('get')}>
                             <img src={IconOdyssey}/>
                         </Link>
                     </BottomBarTab>

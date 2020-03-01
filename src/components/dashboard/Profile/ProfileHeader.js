@@ -5,6 +5,7 @@ import Button from '../../library/Buttons/Button';
 import ProfileStatsBlock from './ProfileStatsBlock';
 import { odysseySettings } from '../../../config/theme';
 import MainTitle from '../../library/Styles/MainTitle';
+import Settings from '../../dashboard/Settings/Settings';
 
 const ProfileHeaderWrapper = styled.div`
 `;
@@ -59,18 +60,19 @@ class ProfileHeader extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <ProfileHeaderWrapper>
+                 {this.props.isActiveUser ? <Settings /> : null}
                 <CoverImage />
                 <FollowWrapper>
-                    <Button variant='primary' body="Follow" />
+                    {this.props.isActiveUser ? <br/> : <Button variant='primary' body="Follow" />}
                     <ProfileImage src='https://picsum.photos/1920/1080' />
                 </FollowWrapper>
-                <MainTitle body="Welcome to Xavier's Journal" />
+                <MainTitle body={this.props.titleProfile !== null ? this.props.titleProfile : this.props.nameUser + "'s Profile"} />
                 <ProfileStats>
-                    <ProfileStatsBlock />
-                    <ProfileStatsBlock />
-                    <ProfileStatsBlock />
+                    <ProfileStatsBlock top={this.props.Followers} bottom={'Followers'}  />
+                    <ProfileStatsBlock top={this.props.postsLength} bottom={'Posts'}  />
                 </ProfileStats>
                 <Separator />
             </ProfileHeaderWrapper>

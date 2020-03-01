@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
-import BottomBar from './BottomBar';
 import HomeFeed from './HomeFeed/HomeFeed';
 import Profile from './Profile/Profile';
 import Notifications from './Notifications/Notifications';
@@ -20,7 +19,6 @@ class DashboardWrapper extends Component {
                 <Route path={this.props.match.url + '/profile'} component={Profile}/>
                 <Route path={this.props.match.url + '/notifications'} component={Notifications}/>
                 <Route path={this.props.match.url + '/search'} component={Search}/>
-                <BottomBar />
             </React.Fragment>
         );
     }

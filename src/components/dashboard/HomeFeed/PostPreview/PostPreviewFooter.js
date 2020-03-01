@@ -37,16 +37,16 @@ const PostPreviewFooter = (props) => {
             opacity: 1;
         }
     `;
-
+    console.log(props);
     return (
     
         <PostPreviewFooter>
-            <h1>{props.title}</h1>
-            <p>{props.desc}</p>
+            <h1>{props.titlePost}</h1>
+            <p>{props.descPost}</p>
             <PostPreviewInfo>
                 <p>⏱️5 minutes read</p>
-                <p>London</p>
-                <p>by {props.user}</p>
+                <p>{props.locationData}</p>
+                <p>by {props.nameUser}</p>
             </PostPreviewInfo>
         </PostPreviewFooter>
     )

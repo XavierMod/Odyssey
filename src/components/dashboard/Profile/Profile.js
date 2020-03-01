@@ -5,6 +5,10 @@ import ProfileHeader from './ProfileHeader';
 import PostPreview from '../../dashboard/HomeFeed/PostPreview/PostPreview';
 import Layout from '../../library/Layout';
 import NoMorePosts from './NoMorePosts';
+import UserToken from '../../../services/UserToken';
+import axios from 'axios';
+import PostsBlock from '../HomeFeed/PostsBlock';
+
 const ProfileWrapper = styled.div`
 
 `;
@@ -12,7 +16,23 @@ const ProfileWrapper = styled.div`
 class Profile extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            posts: []
+        }
+    }
+
+    componentDidMount() {
+        let formData = new FormData();
+        console.log(this.state.posts);
+        formData.append("content", UserToken('get'));
+        axios.post('http://localhost:8888/odyssey-api/demo_react/api/endpoints/fetchProfile.php', formData)
+          .then(response => {
+              console.log(response.data);
+              this.setState({posts: response.data});
+          })
+          .catch(function (error) {
+            alert(error);
+          });
     }
 
     render() {
@@ -20,7 +40,7 @@ class Profile extends Component {
             <ProfileWrapper>
                     <ProfileHeader />
                     <Layout>
-                        <NoMorePosts />
+                        {this.state.posts.length == 0 ? <NoMorePosts /> : <PostsBlock posts={this.state.posts} />}
                     </Layout>
             </ProfileWrapper>
         );
