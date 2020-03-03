@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { ToastProvider, useToasts } from 'react-toast-notifications'
 import AuthVerification from './components/helpers/AuthVerification'
 import BottomBar from './components/dashboard/BottomBar'
+import CreatePost from './components/dashboard/CreatePost/CreatePost'
 
 const DevelopmentRoot = styled.div`
   text-align: center;
@@ -41,6 +42,7 @@ class App extends Component {
         <React.Fragment>
           <Route path="/dashboard" component={DashboardWrapper} />
           <Route path="/user" component={UsersTemplates} />
+          <Route path="/createPost" component={CreatePost} />
           <BottomBar />
       </React.Fragment>
       )

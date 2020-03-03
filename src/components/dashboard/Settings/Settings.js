@@ -35,7 +35,6 @@ class Settings extends Component {
     }
 
     activateSettings = () => {
-        console.log(this.props.isActive)
         this.setState({isActive: !this.state.isActive})
     }
 

@@ -6,11 +6,11 @@ import Checkmark from '../../../assets/icons/checkmark.svg';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const TextAreaWrapper = styled.div`
-    display: inline-block;
+    display: block;
     width: 300px;
     text-align: left;
     height: 100%;
-    margin: 30px 0;
+    margin: 30px auto;
 
     label {
         display: block;

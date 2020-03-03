@@ -66,7 +66,11 @@ class BottomBar extends Component {
                             <img src={IconSearch}/>
                         </Link>
                     </BottomBarTab>
-                    <BottomBarTab><img className="Add" src={IconPlusCircle}/></BottomBarTab>
+                    <BottomBarTab>
+                    <Link to="/createPost">
+                        <img className="Add" src={IconPlusCircle}/>
+                    </Link>
+                    </BottomBarTab>
                     <BottomBarTab>
                         <Link to={"/user/" + UserToken('get')}>
                             <img src={IconOdyssey}/>

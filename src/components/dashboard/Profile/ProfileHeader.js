@@ -60,7 +60,6 @@ class ProfileHeader extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <ProfileHeaderWrapper>
                  {this.props.isActiveUser ? <Settings /> : null}

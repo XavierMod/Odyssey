@@ -27,7 +27,7 @@ const PostPreview = (props) => {
         <PostPreviewWrapper>
             <PostPreviewHeader />
             <Link to={"/user/" + props.data.nameUser + "/" + props.data.slugPost}>
-            <PostPreviewImage image={dummyImage} />
+            <PostPreviewImage {...props.data} image={dummyImage} />
             <PostPreviewFooter {...props.data} />
             </Link>
         </PostPreviewWrapper>

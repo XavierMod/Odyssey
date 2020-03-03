@@ -43,13 +43,31 @@ class PostsBlock extends Component {
                     filterPosts = allPosts.filter((element) => {
                         return element.locationData.toLowerCase() == el.query.toLowerCase()
                     })
+                } else if (el.type == 'Date') {
+                    if (el.query == 'Order by newest') {
+                        var d = new Date();
+                        filterPosts = allPosts.sort((elementA) => {
+                            let postDate = new Date(elementA.postTimeData.substring(0, 10))
+                            return d - postDate;
+                        });
+                    } else if (el.query == 'Order by oldest') {
+                        var d = new Date();
+                        filterPosts = allPosts.sort((elementA) => {
+                            let postDate = new Date(elementA.postTimeData.substring(0, 10))
+                            return postDate - d;
+                        });
+                    }
+                } else if (el.type == 'Tags') {
+                    filterPosts = allPosts.filter((element) => {
+                        return element.tags.toLowerCase().search(el.query.toLowerCase()) !== -1
+                    })
                 }
             });
 
             return filterPosts.map((el, ind) => {
                 return (<PostPreview postsLength={this.props.posts.length} data={el} />)
             });
-        } else {
+        } else if (finalQuery.length == 0) {
             return this.props.posts.map((el, ind) => {
                 return (<PostPreview postsLength={this.props.posts.length} data={el} />)
             })

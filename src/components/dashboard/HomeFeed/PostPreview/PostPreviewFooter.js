@@ -44,7 +44,7 @@ const PostPreviewFooter = (props) => {
             <h1>{props.titlePost}</h1>
             <p>{props.descPost}</p>
             <PostPreviewInfo>
-                <p>⏱️5 minutes read</p>
+                <p>{props.postTimeData}</p>
                 <p>{props.locationData}</p>
                 <p>by {props.nameUser}</p>
             </PostPreviewInfo>

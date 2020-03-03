@@ -74,6 +74,7 @@ const UpdateResults = styled.div`
     color: white;
     width: 30%;
     border-radius: 5px;
+    cursor: pointer;
 `;
 
 class Filter extends Component {
@@ -82,7 +83,7 @@ class Filter extends Component {
         super(props);
         this.state = {
             filterActive: false,
-            finalQuery: []
+            finalQuery: []        
         } 
     }
 
@@ -148,12 +149,12 @@ class Filter extends Component {
                         rotation={this.state.filterActive ? 'rotate(90deg)' : 'rotate(-90deg)'} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></CloseFilter>
                     </FilterHeader>
                     <FilterContent activate={this.state.filterActive ? 'block' : 'none'}>
-                        <FilterBlock getActionFromBlock={(el) => this.getSortingAction(el)} type="Date" options={['Most recent', 'Oldest']}/>
+                        <FilterBlock getActionFromBlock={(el) => this.getSortingAction(el)} type="Date" options={['Order by newest', 'Order by oldest']}/>
                         <FilterBlock options={['Near me']} getActionFromBlock={(el) => this.getSortingAction(el)} type="Location"/>
                         <FilterBlock options={['Travel', 'Test']} getActionFromBlock={(el) => this.getSortingAction(el)} type="Tags"/>
                     </FilterContent>
                 </FilterMain>
-            {this.state.finalQuery.length > 0 ? <UpdateResults onClick={() => this.props.sendFinalQuery(this.state.finalQuery)}>Update results</UpdateResults> : null}
+            {this.state.filterActive ? <UpdateResults onClick={() => this.props.sendFinalQuery(this.state.finalQuery)}>Update results</UpdateResults> : null}
             </React.Fragment>
         )
     }
