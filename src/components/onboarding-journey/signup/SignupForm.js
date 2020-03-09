@@ -78,7 +78,7 @@ class SignupForm extends Component {
             this.setState({auth: {...this.state.auth, password: el.value}})
             console.log(this.state);
         } else if (type == 'username') {
-            this.setState({auth: {...this.state.auth, username: el.value}})
+            this.setState({auth: {...this.state.auth, username: el.value.toLowerCase()}})
             console.log(this.state);
         } 
         this.validation();

@@ -6,10 +6,18 @@ import iconCamera from '../../../assets/icons/camera-outline.svg';
 import iconPictures from '../../../assets/icons/image-outline.svg';
 import { odysseySettings } from '../../../config/theme';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import ImageUpload from '../../helpers/ImageUpload'
 
 const CreatePostWrapper = styled.div`
     height: 100%;
     background-color: white;
+`;
+
+const CreatePostContent = styled.div`
+    text-align: center;
+    span {
+        font-size: 12px;
+    }
 `;
 
 const CreatePostHeader = styled.div`
@@ -33,52 +41,6 @@ const CloseIcon = styled.div`
     svg {
         fill: white;
         width: 15px;
-    }
-`;
-
-const FeaturedImage = styled.div`
-    height: 200px;
-    overflow: hidden;
-    position: relative;
-    margin-top: 60px;
-`;
-
-const BGIMG = styled.img`
-    object-fit: cover;
-    height: 120%;
-    width: 120%;
-    filter: blur(10px);
-    position: absolute;
-`;
-
-const ImageIcons = styled.div`
-    z-index: 100;
-    background: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    text-align: center;
-`;
-
-const ImageIcon = styled.div`
-    flex: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    img {
-        width: 30px;
-        border: 1px solid white;
-        padding: 20px;
-        border-radius: 200px;
-        background-color: white;
-
-        &:hover {
-            box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2);
-            transition: all ease 0.2s;
-            cursor: pointer;
-        }
     }
 `;
 
@@ -135,6 +97,48 @@ const WordLimit = styled.span`
 `;
 
 class CreatePost extends Component {
+    constructor(props) {
+        super(props)
+        this.getImageFromComponent = this.getImageFromComponent.bind(this);
+        this.state = {
+            locationData: null,
+            postTimeData: null,
+            postCoverImg: null,
+            postText: null,
+            titlePost: null,
+            descPost: null,
+            slugPost: null,
+            nameUser: null,
+            tags: null
+        }
+    }
+
+    generateSlugPost = (title) => {
+        let convertTitle = title.toLowerCase().split(' ').join('-');
+        let randomNum = `${Math.floor(Math.random() * 10000)
+        }`;
+
+        return `${convertTitle}-${randomNum}`;
+    }
+
+    updateFieldsState = (el, stateKey) => {
+        if (stateKey == 'titlePost') {
+            this.setState({titlePost: el.value, slugPost: this.generateSlugPost(el.value)});
+        } else if (stateKey == 'descPost') {
+            this.setState({descPost: el.value});
+        } else if (stateKey == 'locationData') {
+            console.log(this.state);
+        }
+        console.log(this.state);
+    }
+
+    getImageFromComponent = (el) => {
+        if (this.state.postCoverImg == null) {
+            this.setState({postCoverImg: el});
+            console.log(el , this.state.postCoverImg);
+        }
+    }
+
     render() {
         return (
             <CreatePostWrapper>
@@ -144,26 +148,26 @@ class CreatePost extends Component {
                     <Post opacity="0.5">Post</Post>
                 </CreatePostHeader>
 
-                <FeaturedImage>
-                    <ImageIcons>
-                        <ImageIcon><img src={iconCamera} /></ImageIcon>
-                        <ImageIcon><img src={iconPictures} /></ImageIcon>
-                    </ImageIcons>
-                    <BGIMG src="https://picsum.photos/800/900" />
-                </FeaturedImage>
+                <ImageUpload getImage={this.getImageFromComponent} />
 
-                <div style={{maxWidth: '700px', margin: 'auto'}}>
-                    <TextField type="text" label="Post name" />
-                    <TextField type="text" label="Post description" />
+                <CreatePostContent style={{maxWidth: '700px', margin: 'auto'}}>
+                    <TextField 
+                    onChange={(el) => this.updateFieldsState(el, 'titlePost')} 
+                    type="text" 
+                    label="Post name" />
+
+                    <TextField 
+                    onChange={(el) => this.updateFieldsState(el, 'descPost')} 
+                    type="text" label="Post description" />
                     <TextField type="text" label="Location" />
-                    <TagsWrapper><TextArea label="Tags" /><span>Separate the tags using commas (e.g. travel, holidays...)</span></TagsWrapper>
+                    <span>Just include a city name (e.g. London)</span>
+                    <TagsWrapper><TextArea label="Tags" /><span>Separate tags using commas (e.g. travel, holidays...)</span></TagsWrapper>
 
                     <PostBodyWrapper>
                         <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Start writing your post here..." />
                     </PostBodyWrapper>
                     <WordLimit>153 words (1000 max)</WordLimit>
-
-                </div>
+                </CreatePostContent>
             </CreatePostWrapper>
         )
     }

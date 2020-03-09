@@ -20,6 +20,12 @@ const PostPreviewWrapper = styled.div`
     margin: 30px auto;
     box-shadow: 1px 1px 6px rgb(214, 214, 214);
     position: relative;
+    text-align: left;
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
 `;
 
 const PostPreview = (props) => {

@@ -14,6 +14,7 @@ const PostPreviewHeader = (props) => {
         top: 0;
         width: 100%;
         color: white;
+        z-index: 100;
     `;
 
     const HeaderLeft = styled.div`

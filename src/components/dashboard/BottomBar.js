@@ -20,7 +20,7 @@ const BottomBarWrapper = styled.div`
     width: 100%;
     height: 50px;
     background-color: white;
-    z-index: 5;
+    z-index: 500;
 
     ul {
         display: flex;
