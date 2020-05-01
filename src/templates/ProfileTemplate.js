@@ -8,7 +8,6 @@ import NoMorePosts from '../components/dashboard/Profile/NoMorePosts'
 import UserToken from '../services/UserToken';
 
 const ProfileWrapper = styled.div`
-
 `;
 
 class ProfileTemplate extends Component {
@@ -34,12 +33,12 @@ class ProfileTemplate extends Component {
     }
 
     render() {
-        console.log(this.state.isActiveUser)
+        console.log('FROM PROFILETEMPLATE', this.props.data)
         return (
             <ProfileWrapper>
                     <ProfileHeader isActiveUser={this.state.isActiveUser} postsLength={this.state.posts.length} {...this.props.data} />
                     <Layout>
-                        {this.state.posts.length == 0 ? <NoMorePosts /> : <PostsBlock {...this.props.data} posts={this.state.posts} />}
+                        {this.state.posts.length == 0 ? <NoMorePosts /> : <PostsBlock mainUserProfile={this.props.data} {...this.props.data} posts={this.state.posts} />}
                     </Layout>
             </ProfileWrapper>
         );

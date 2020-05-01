@@ -8,23 +8,9 @@ const NoResultsFound = styled.span`
     font-weight: 700;
 `;
 
-const ProfileFound = styled.div`
-    padding: 10px;
-    margin: 10px auto;
-    text-align: left;
-    font-size: 20px;
-    font-weight: 700;
-    cursor: pointer;
-
-    a {
-        text-decoration: none;
-        color: black;
-    }
-`;
-
 const PostsResults = (props) => {
     const renderQueries = () => {
-        console.log(props.renderQuery)
+        console.log('FROM RESULTS', props)
         let render;
         if (props.renderQuery !== undefined && props.renderQuery.length == []) {
             return <NoResultsFound>No results found</NoResultsFound>
@@ -33,7 +19,7 @@ const PostsResults = (props) => {
             render = props.renderQuery.map((el, ind, obj) => {
                 console.log(el)
                 return (
-                    <PostPreview data={el} />
+                    <PostPreview activeUserProfile={props.activeUserProfile[0]} data={el} />
                 )
             });
         } else if (props.renderQuery == undefined) {

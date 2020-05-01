@@ -7,6 +7,7 @@ export const odysseySettings = {
     bodyFont: 'IBM Plex Serif',
 
     headingSize: '22px',
+    letterSpacing: '-0.4px',
 
     layoutMainPadding: '15px'
 }

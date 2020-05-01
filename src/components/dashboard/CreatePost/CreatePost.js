@@ -7,8 +7,10 @@ import iconPictures from '../../../assets/icons/image-outline.svg';
 import { odysseySettings } from '../../../config/theme';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ImageUpload from '../../helpers/ImageUpload'
+import axios from 'axios'
+import UserToken from '../../../services/UserToken';
 
-const CreatePostWrapper = styled.div`
+const CreatePostWrapper = styled.form`
     height: 100%;
     background-color: white;
 `;
@@ -29,6 +31,7 @@ const CreatePostHeader = styled.div`
     width: 100%;
     z-index: 1000;
     top: 0;
+    height: 60px;
 `;
 
 const CloseIcon = styled.div`
@@ -37,7 +40,10 @@ const CloseIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30000;
     svg {
         fill: white;
         width: 15px;
@@ -52,15 +58,27 @@ const SPAN = styled.span`
     font-size: 19px;
 `;
 
-const Post = styled.a`
-    padding: 25px;
+const Post = styled.button`
+    padding: 0 25px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
     flex: 10%;
     color: white;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    opacity: ${props => props.opacity};
+    background-color: black;
+    border: none;
+    font-size: 14px;
+    height: 60px;
+    font-family: ${odysseySettings.bodyFont};
+    font-weight: 700;
+    cursor: pointer;
 
+    opacity: ${props => props.opacity};
+    pointer-events: ${props => props.events};
 `;
 
 const TagsWrapper = styled.div`
@@ -84,90 +102,77 @@ const PostBodyWrapper = styled.div`
         width: 70%;
         padding: 30px;
     }
+    padding-bottom: 100px;
 `;
 
-const WordLimit = styled.span`
-    width: 100%;
-    text-align: center;
-    display: block;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
-    margin-bottom: 100px;
-    padding: 20px 0;
-    font-size: 13px;
+const WordLimit = styled.div`
+    padding-bottom: 30px;
 `;
 
 class CreatePost extends Component {
     constructor(props) {
         super(props)
-        this.getImageFromComponent = this.getImageFromComponent.bind(this);
-        this.state = {
-            locationData: null,
-            postTimeData: null,
-            postCoverImg: null,
-            postText: null,
-            titlePost: null,
-            descPost: null,
-            slugPost: null,
-            nameUser: null,
-            tags: null
-        }
     }
 
-    generateSlugPost = (title) => {
-        let convertTitle = title.toLowerCase().split(' ').join('-');
-        let randomNum = `${Math.floor(Math.random() * 10000)
-        }`;
-
-        return `${convertTitle}-${randomNum}`;
+    state = {
+        wordCountPostBody: 0
     }
 
-    updateFieldsState = (el, stateKey) => {
-        if (stateKey == 'titlePost') {
-            this.setState({titlePost: el.value, slugPost: this.generateSlugPost(el.value)});
-        } else if (stateKey == 'descPost') {
-            this.setState({descPost: el.value});
-        } else if (stateKey == 'locationData') {
-            console.log(this.state);
-        }
-        console.log(this.state);
+    getDateChild = (el) => {
+        this.setState({date: el}); 
     }
 
-    getImageFromComponent = (el) => {
-        if (this.state.postCoverImg == null) {
-            this.setState({postCoverImg: el});
-            console.log(el , this.state.postCoverImg);
-        }
-    }
 
     render() {
         return (
-            <CreatePostWrapper>
+            <CreatePostWrapper 
+                action={"http://localhost:8888/odyssey-api/demo_react/api/endpoints/createNewPost.php?nameUser=" + UserToken('get') }
+                method="POST"
+                encType="multipart/form-data">
                 <CreatePostHeader>
-                    <CloseIcon><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg></CloseIcon>
                     <SPAN>Start post</SPAN>
-                    <Post opacity="0.5">Post</Post>
                 </CreatePostHeader>
 
-                <ImageUpload getImage={this.getImageFromComponent} />
+                <ImageUpload getDateChild={(el) => this.getDateChild(el)} />
+                <input type="hidden" value={this.state.date} name="postTimeData" />
 
                 <CreatePostContent style={{maxWidth: '700px', margin: 'auto'}}>
                     <TextField 
-                    onChange={(el) => this.updateFieldsState(el, 'titlePost')} 
+                    required
+                    maxLength={80}
+                    name="titlePost"
+                    onChange={(el) => console.log(el)} 
                     type="text" 
                     label="Post name" />
 
                     <TextField 
-                    onChange={(el) => this.updateFieldsState(el, 'descPost')} 
-                    type="text" label="Post description" />
-                    <TextField type="text" label="Location" />
+                        required
+                        maxLength={100}
+                        name="descPost"
+                        onChange={(el) => console.log(el)}
+                        type="text" label="Post description" />
+                    <TextField required name="locationData" onChange={(el) => console.log(el)} type="text" label="Location" />
                     <span>Just include a city name (e.g. London)</span>
-                    <TagsWrapper><TextArea label="Tags" /><span>Separate tags using commas (e.g. travel, holidays...)</span></TagsWrapper>
+                    <TagsWrapper><TextField maxLength={30} type="text" name="tags" label="Tags" onChange={(el) => console.log(el)}  /><span>Separate tags using commas (e.g. travel, holidays...)</span></TagsWrapper>
 
                     <PostBodyWrapper>
-                        <TextareaAutosize aria-label="minimum height" rowsMin={3} placeholder="Start writing your post here..." />
+                        <TextareaAutosize
+                        required
+                        aria-label="minimum height"
+                        onChange={(el) => this.setState({wordCountPostBody: el.target.value.length})} 
+                        name="postText"
+                        maxLength="500"
+                        rowsMin={3} 
+                        placeholder="Start writing your post here..." />
+                        <WordLimit>{this.state.wordCountPostBody} characters. (500 max)</WordLimit>
                     </PostBodyWrapper>
-                    <WordLimit>153 words (1000 max)</WordLimit>
                 </CreatePostContent>
+
+                <Post 
+                    opacity={this.state.date ? "1" : ".2"} 
+                    events={this.state.date ? "all" : "none"} 
+                    type="submit" name="submit">Post</Post>
+
             </CreatePostWrapper>
         )
     }

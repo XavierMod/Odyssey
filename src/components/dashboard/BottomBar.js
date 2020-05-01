@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import { odysseySettings } from '../../config/theme';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import UserToken from '../../services/UserToken';
  
 import IconHome from '../../assets/icons/bar/bottom-bar-home.svg';
@@ -39,10 +39,20 @@ const BottomBarTab = styled.li`
 
     img {
         width: 18px;
+        opacity: 0.5;
+        transition: all ease 0.8;
     }
 
     img.Add {
         width: 30px;
+    }
+
+    .is-active {
+        opacity: 1 !important;
+
+        img {
+            opacity: 1;
+        }
     }
 `;
 
@@ -57,29 +67,29 @@ class BottomBar extends Component {
             <BottomBarWrapper>
                 <ul>
                     <BottomBarTab>
-                        <Link to="/dashboard/home">
+                        <NavLink activeClassName='is-active' to="/dashboard/home">
                             <img src={IconHome}/>
-                        </Link>
+                        </NavLink>
                     </BottomBarTab>
                     <BottomBarTab>
-                        <Link to="/dashboard/search">
+                        <NavLink activeClassName='is-active' to="/dashboard/search">
                             <img src={IconSearch}/>
-                        </Link>
+                        </NavLink>
                     </BottomBarTab>
                     <BottomBarTab>
-                    <Link to="/createPost">
+                    <NavLink activeClassName='is-active' to="/createPost">
                         <img className="Add" src={IconPlusCircle}/>
-                    </Link>
+                    </NavLink>
                     </BottomBarTab>
                     <BottomBarTab>
-                        <Link to={"/user/" + UserToken('get')}>
+                        <NavLink activeClassName='is-active' to={"/user/" + UserToken('get')}>
                             <img src={IconOdyssey}/>
-                        </Link>
+                        </NavLink>
                     </BottomBarTab>
                     <BottomBarTab>
-                        <Link to="/dashboard/notifications">
+                        <NavLink activeClassName='is-active' to="/dashboard/notifications">
                             <img src={IconBell}/>
-                        </Link>
+                        </NavLink>
                     </BottomBarTab>
                 </ul>
             </BottomBarWrapper>

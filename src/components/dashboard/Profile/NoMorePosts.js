@@ -8,16 +8,15 @@ const NoMorePostsWrapper = styled.div`
     text-align: center;
 
     img {
-        width: 300px;
+        width: 250px;
     }
 `;
 
 const NoMorePosts = () => {
     return (
         <NoMorePostsWrapper>
-            <img src={NoMorePostsGif} />
+            <img src="https://opendoodles.s3-us-west-1.amazonaws.com/sitting.svg" />
             <MainTitle body="No posts yet!"/>
-            <Button variant='submit' body='Create a post'/>
         </NoMorePostsWrapper>
     )
 }

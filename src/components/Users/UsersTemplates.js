@@ -17,15 +17,15 @@ class UsersTemplates extends Component {
             axios.get('http://localhost:8888/odyssey-api/demo_react/api/endpoints/getAllPosts.php'),
             axios.get('http://localhost:8888/odyssey-api/demo_react/api/endpoints/getAllProfiles.php')
         ]).then(([r1, r2]) => {
+            console.log(r1.data);
             this.setState({posts: r1.data});
             this.setState({profiles: r2.data});
         })
     }
 
     render() {
-
+        console.log(this.state.posts);
         const postTemplates = this.state.posts.map((el, ind, arr) => {
-            console.log(this.props.match.url + "/" + el.slugPost)
             return <Route key={el.id} path={this.props.match.url + "/" + el.nameUser + "/" + el.slugPost} exact
             render={() => 
             <PostTemplate
@@ -34,6 +34,10 @@ class UsersTemplates extends Component {
         });
 
         const profileTemplates = this.state.profiles.map((el, ind, arr) => {
+            if (this.state.profiles[ind].friends == null) {
+                this.state.profiles[ind].friends = '';
+            }
+            console.log(this.state.profiles[ind])
             return <Route key={el.id} path={this.props.match.url + "/" + el.nameUser} exact
             render={() => 
             <ProfileTemplate

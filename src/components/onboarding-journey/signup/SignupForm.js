@@ -6,12 +6,36 @@ import axios from 'axios';
 import TextField from '../../library/Form/TextField';
 import Button from '../../library/Buttons/Button';
 import { checkEmptyFields, validateEmail } from '../../../services/FormServices';
+import MainTitle from '../../library/Styles/MainTitle';
+import UserToken from '../../../services/UserToken';
 
 const FORM = styled.form`
     text-align: center;
+`;
 
-    .buttonPrimary {
-        margin-bottom: 20px;
+const IMG = styled.img`
+    padding-top: 80px;
+    width: 400px;
+    margin: auto;
+    display: block;
+`;
+
+const ButtonsHeader = styled.div`
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    z-index: 101000;
+    
+    .button {
+        margin: 20px;
+        padding: 0;
+        width: 80px !important;
+        padding: 10px;
+        border-radius: 100px;
     }
 `;
 
@@ -51,7 +75,8 @@ class SignupForm extends Component {
                 this.setState({errorUsername: {isError: true, bodyError: response.data.messageUsername},
                                errorEmail: {isError: true, bodyError: response.data.messageEmail}});
             } else {
-               this.props.history.push(this.props.match.url + '/next');
+            UserToken('set', this.state.auth.username);
+              window.location.href = '/onboarding/loading';
             }
           })
           .catch(function (error) {
@@ -86,16 +111,22 @@ class SignupForm extends Component {
 
     render() {
         return (
+            <React.Fragment>
+            <IMG src="https://opendoodles.s3-us-west-1.amazonaws.com/unboxing.svg" />
+            <MainTitle body="Sign in"/>
         <FORM noValidate autoComplete="on">
             <TextField showError={this.state.errorUsername.isError} bodyError={this.state.errorUsername.bodyError} onChange={(el) => this.onChange(el, "username")} type="text" label="Your Username" />
             <TextField showError={this.state.errorEmail.isError} bodyError={this.state.errorEmail.bodyError} onChange={(el) => this.onChange(el, "email")} fieldType="email" type="email" label="Your Email" />
             <TextField onChange={(el) => this.onChange(el, "password")} fieldType="password" type="password" label="Your Password" />
-            <Button onClick={this.sendData} 
-                    variant="primary" 
-                    body="Next" 
-                    disabled={this.state.validated ? false : true} />
-            <Button variant="primary" body="Go Back" link="/onboarding"/>
+            <ButtonsHeader>
+                <Button variant="primary" body="Go Back" link="/onboarding"/>
+                <Button onClick={this.sendData} 
+                        variant="primary" 
+                        body="Next"
+                        disabled={this.state.validated ? false : true} />
+            </ButtonsHeader>
         </FORM>
+        </React.Fragment>
         );
     }
 };

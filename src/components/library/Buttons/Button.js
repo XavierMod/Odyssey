@@ -114,7 +114,7 @@ const Button = ( props ) => {
         return (
             <div style={props.disabled ? { pointerEvents: 'none', opacity: '0.6' } : null} onClick={props.onClick}>
                 <Link to={props.link}>
-                    <ButtonWrapper className="buttonPrimary">
+                    <ButtonWrapper className="buttonPrimary button">
                         <span>{props.body}</span>
                     </ButtonWrapper>
                 </Link>
@@ -124,7 +124,7 @@ const Button = ( props ) => {
         return (
             <DIV>
                 <Link to={props.link}>
-                    <ButtonWrapperWithImage className="buttonWithImage">
+                    <ButtonWrapperWithImage className="buttonWithImage button">
                         <IMGWrapper>                   
                             {getImage()}
                         </IMGWrapper>
@@ -136,7 +136,7 @@ const Button = ( props ) => {
     } else if ( props.variant == 'submit' ) {
         return (
             <div>
-                <ButtonWrapperSubmit className="buttonSubmit">
+                <ButtonWrapperSubmit className="buttonSubmit button">
                     <input hidden type="submit"></input>
                     <span>{props.body}</span>
                 </ButtonWrapperSubmit>

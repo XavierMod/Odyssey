@@ -5,6 +5,7 @@ import PostPreviewHeader from './PostPreviewHeader';
 import { odysseySettings } from '../../../../config/theme';
 import PostPreviewFooter from './PostPreviewFooter';
 import PostTemplate from '../../../../templates/PostTemplate';
+import PostPreviewLike from '../PostPreview/PostPreviewLike';
 
 import {
   BrowserRouter as Router,
@@ -13,14 +14,13 @@ import {
   Link
 } from "react-router-dom";
 
-const dummyImage = 'https://picsum.photos/1200/1300';
-
 const PostPreviewWrapper = styled.div`
     max-width: 550px;
     margin: 30px auto;
-    box-shadow: 1px 1px 6px rgb(214, 214, 214);
+    box-shadow: 1px 1px 80px rgb(214, 214, 214);
     position: relative;
     text-align: left;
+    border-radius: 5px;
 
     a {
         color: black;
@@ -29,11 +29,14 @@ const PostPreviewWrapper = styled.div`
 `;
 
 const PostPreview = (props) => {
+    console.log('FROM PostPreview', props);
+    console.log('FROM PostPreview', props.activeUserProfile);
     return (
         <PostPreviewWrapper>
+            <PostPreviewLike likedPostsActiveUser={props.activeUserProfile.likedPosts} userInfo={props.data} />
             <PostPreviewHeader />
             <Link to={"/user/" + props.data.nameUser + "/" + props.data.slugPost}>
-            <PostPreviewImage {...props.data} image={dummyImage} />
+            <PostPreviewImage {...props.data} image={props.data.postCoverImg !== "" ? "http://localhost:8888/odyssey-api/demo_react/api/images/posts/" + props.data.postCoverImg : "http://localhost:8888/odyssey-api/demo_react/api/images/posts/no-cover.jpg"} />
             <PostPreviewFooter {...props.data} />
             </Link>
         </PostPreviewWrapper>

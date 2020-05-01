@@ -8,18 +8,20 @@ import AccountResults from './AccountResults';
 import axios from 'axios'
 import UserToken from '../../../services/UserToken'
 import PostsResults from './PostsResults';
+import HeaderLogo from '../../library/Headers/HeaderLogo';
+
 
 const SearchWrapper = styled.div`
-    text-align: center;
-    margin: 20px 0; 
+    text-align: left;
 `;
 
 const SearchHeader = styled.div`
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-`;
-
-const LogoWrapper = styled.div`
-    padding-bottom: 20px;
+    padding: 20px;
+    padding-top: 90px;
+    padding-bottom: 0;
+    margin: auto;
+    text-align: center;
 `;
 
 const SearchInputWrapper = styled.div`
@@ -35,9 +37,9 @@ const SearchInputWrapper = styled.div`
 const INPUT = styled.input`
     width: 80%;
     border-radius: 2px;
-    border: 1px solid black;
+    border: 1px solid white;
     height: 30px;
-    font-size: 16px;
+    font-size: 22px;
     padding: 5px;
     color: black;
     font-family: ${odysseySettings.bodyFont};
@@ -50,44 +52,42 @@ const SearchOptions = styled.div`
 
     ul {
         display: flex;
-        width: 90%;
-        margin: auto;
         align-items: center;
         justify-content: center;
     }
-
-    li {
-        flex: 33%;
-        display: inline-block;
-        padding: 10px 0;
-        font-family: ${odysseySettings.bodyFont};
-        font-size: 13px;
-        position: relative;
-        cursor: pointer;
-    }
 `;
 
-const LinkStatus = styled.span`
-    background-color: black;
-    width: 100%;
-    height: 2px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+const ListItem = styled.li`
+    display: inline-block;
+    padding: 20px;
+    margin: 0 10px; 
+    font-size: 17px;
+    border-bottom: 7px solid black;
+    opacity: ${props => props.opacity};
+    cursor: pointer;
 `;
 
 const SearchResultsWrapper = styled.div`
     background-color: white;
     margin: 40px auto;
     max-width: 600px;
+    padding: 0 20px;
 `;
 
 const SearchButton = styled.div`
-    border: 1px solid black;
+    border: 2px solid black;
     padding: 12px 30px;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
+    font-weight: 700;
+    border-radius: 100px;
     cursor: pointer;
+    transition: all ease 0.5s;
+    &:hover {
+        background-color: black;
+        border: 2px solid black;
+        color: white;
+    }
 `;
 
 class Search extends Component {
@@ -111,7 +111,6 @@ class Search extends Component {
             Promise.all([
                 axios.post('http://localhost:8888/odyssey-api/demo_react/api/endpoints/getProfileResults.php', formData)
             ]).then(([r1]) => {
-                console.log(r1);
                 this.setState({resultsPosts: r1.data})
             })
         } else if (this.state.activated == 'Accounts') {
@@ -121,38 +120,51 @@ class Search extends Component {
             Promise.all([
                 axios.post('http://localhost:8888/odyssey-api/demo_react/api/endpoints/getPostsResults.php', formData)
             ]).then(([r1]) => {
-                console.log(r1);
                 this.setState({resultsAccounts: r1.data})
             })
         }
     }
 
     activateOption = (option) => {
-        this.setState({activated: option.target.textContent})
+        if (option.target.textContent === 'Posts') {
+            this.setState({activated: 'Accounts'})
+        } else if (option.target.textContent === 'Accounts') {
+            this.setState({activated: 'Posts'})
+        }
+    }
+
+    componentDidMount() {
+        let formData = new FormData();
+        formData.append("content", UserToken('get'));
+        Promise.all([
+            axios.post('http://localhost:8888/odyssey-api/demo_react/api/endpoints/getProfileByNameUser.php', formData)
+        ]).then(([r1]) => {
+            this.setState({activeUser: r1.data})
+        })
     }
 
     renderOptions = () => {
         if (this.state.activated == 'Posts') {
             return <AccountResults renderQuery={this.state.resultsPosts} />
         } else if (this.state.activated == 'Accounts') {
-            return <PostsResults renderQuery={this.state.resultsAccounts} />
+            return <PostsResults activeUserProfile={this.state.activeUser} renderQuery={this.state.resultsAccounts} />
         }
     }
 
-
     render() {
+        console.log(this.state.activated);
         return (
             <SearchWrapper>
+                <HeaderLogo addSettings/>
                 <SearchHeader>
-                    <LogoWrapper><Logo /></LogoWrapper>
                     <SearchInputWrapper>
                         <INPUT onChange={(el) => this.onChange(el)} type="text" placeholder="Search" />
                         <SearchButton onClick={this.getResults}>search</SearchButton>
                     </SearchInputWrapper>
                     <SearchOptions>
                         <ul>
-                            <li onClick={(el) => this.activateOption(el)}>Posts{this.state.activated == 'Posts' ? <LinkStatus></LinkStatus> : null}</li>
-                            <li onClick={(el) => this.activateOption(el)}>Accounts{this.state.activated == 'Accounts' ? <LinkStatus></LinkStatus> : null}</li>
+                            <ListItem opacity={this.state.activated == 'Posts' ? 1 : 0.4} onClick={(el) => this.activateOption(el)}>Accounts</ListItem>
+                            <ListItem opacity={this.state.activated == 'Accounts' ? 1 : 0.4} onClick={(el) => this.activateOption(el)}>Posts</ListItem>
                         </ul>
                     </SearchOptions>
                 </SearchHeader>

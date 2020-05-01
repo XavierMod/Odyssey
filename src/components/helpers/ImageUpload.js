@@ -32,7 +32,6 @@ const ImageUploaderWrapper = styled.div`
         box-shadow: none;
 
          .uploadPicturesWrapper .uploadPictureContainer {
-             border: 1px solid green;
              box-shadow: none;
              width: 100%;
              height: 180px;
@@ -57,21 +56,29 @@ class ImageUpload extends React.Component {
          this.state = { picture: undefined };
          this.onDrop = this.onDrop.bind(this);
     }
+
+    sendDateParent(date) {
+        this.props.getDateChild(date);
+    }
  
     onDrop(pic) {
         this.setState({
             picture: pic,
         });
-    }
 
-    componentDidUpdate() {
-        this.props.getImage(this.state.picture);
+        if (pic[0] !== undefined) {
+            let current_datetime = new Date();
+            current_datetime = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
+
+            this.sendDateParent(current_datetime)
+        }
     }
  
     render() {
         return (
             <ImageUploaderWrapper>
                 <ImageUploader
+                    type="file" name={this.props.customName ? this.props.customName : "file"}
                     withIcon={true}
                     className={'imageUploader'}
                     withPreview={true}

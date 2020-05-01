@@ -50,7 +50,6 @@ class PostPreviewImage extends Component {
     }
 
     render() {
-        console.log('from image', this.props.tags);
         this.renderTags();
         return (
             <MainBG>

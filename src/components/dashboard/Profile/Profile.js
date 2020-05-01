@@ -10,7 +10,7 @@ import axios from 'axios';
 import PostsBlock from '../HomeFeed/PostsBlock';
 
 const ProfileWrapper = styled.div`
-
+    border: 1px solid red;
 `;
 
 class Profile extends Component {
@@ -38,7 +38,6 @@ class Profile extends Component {
     render() {
         return (
             <ProfileWrapper>
-                    <ProfileHeader />
                     <Layout>
                         {this.state.posts.length == 0 ? <NoMorePosts /> : <PostsBlock posts={this.state.posts} />}
                     </Layout>

@@ -49,6 +49,12 @@ const INPUT = styled.input`
     margin-bottom: 5px;
 `;
 
+const TagReminder = styled.p`
+    font-size: 11px;
+    margin: 10px 0;
+    opacity: 0.4;
+`;
+
 class FilterBlock extends Component {
     constructor(props) {
         super(props);
@@ -89,11 +95,8 @@ class FilterBlock extends Component {
         } else if (this.props.type == 'Tags') {
             return (
                 <FilterModal style={this.state.isModalOpen ? {display: 'block'} : {display: 'none'}}>
-                    <ul>
-                        {this.props.options.map((el, ind) => {
-                            return <li onClick={(el) => this.sendAction(el.target.textContent, this.props.type)}>{el}</li>
-                        })}
-                    </ul>
+                    <INPUT type="text" onChange={(el) => this.sendAction(el.target.value)}/>
+                    <TagReminder>Reminder: One tag at a time.</TagReminder>
                 </FilterModal>
             );
         }

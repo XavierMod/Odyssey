@@ -15,6 +15,7 @@ const TextFieldWrapper = styled.div`
         font-family: ${odysseySettings.headingFont};
         color: ${odysseySettings.primaryColor};
         font-size: 16px;
+        letter-spacing: ${odysseySettings.letterSpacing};
     }
 
     input {
@@ -93,7 +94,7 @@ class BasicTextFields extends Component {
                 <TextFieldWrapper>
                     <ContentWrapper>
                         <div style={{position: 'relative'}}>
-                            <TextField required onChange={(ev) => {
+                            <TextField name={this.props.name} required={this.props.required} onChange={(ev) => {
                                 this.validateEmail(ev.target);
                                 this.props.onChange(ev.target);
                             }} id="standard-basic" type={this.props.type} label={this.props.label} />
@@ -107,8 +108,9 @@ class BasicTextFields extends Component {
             return (
                 <TextFieldWrapper>
                     <ContentWrapper>
-                        <TextField 
-                            inputProps={{ maxLength: 20, minLength: 6 }} required 
+                        <TextField
+                            name={this.props.name} 
+                            inputProps={{ maxLength: this.props.maxLength, minLength: 6 }} required={this.props.required}  
                             onChange={(ev) => {
                             this.props.onChange(ev.target);
                             this.validatePassword(ev.target)}}
@@ -123,7 +125,7 @@ class BasicTextFields extends Component {
             return (
                 <TextFieldWrapper>
                     <ContentWrapper>
-                        <TextField onChange={(ev) => this.props.onChange(ev.target)} inputProps={{ maxLength: 20, minLength: 6 }} id="standard-basic" required type={this.props.type} label={this.props.label} />
+                        <TextField name={this.props.name} onChange={(ev) => this.props.onChange(ev.target)} inputProps={{ maxLength: this.props.maxLength, minLength: 6 }} id="standard-basic" required={this.props.required}  type={this.props.type} label={this.props.label} />
                         {this.props.showError ? <NotificationField body={this.props.bodyError} /> : null}
                     </ContentWrapper>
                 </TextFieldWrapper>

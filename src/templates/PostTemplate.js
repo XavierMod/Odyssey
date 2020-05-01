@@ -1,80 +1,87 @@
 import React from 'react'
 import styled from 'styled-components'
 import Logo from '../assets/odyssey/odyssey-logo.svg';
-
-const Header = styled.div`
-    background-color: white;
-    width: 100%;
-    height: 80px;
-    box-shadow: 1px 1px 5px #bababa;
-    position: fixed;
-    display: flex;
-
-    img {
-        flex: 100%;
-        padding: 20px;
-    }
-`;
-
-const SVG = styled.div`
-    width: 100px;
-    height: 100%;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all ease .1s;
-    cursor: pointer;
-
-    &:hover {
-        background-color: black;
-
-        svg {
-            fill: white;
-        }
-    }
-
-    svg {
-        position: absolute;
-        top: 0;
-        height: 100%;
-        transform: rotate(180deg);
-    }
-`;
+import HeaderLogo from '../components/library/Headers/HeaderLogo';
+import Button from '../components/library/Buttons/Button';
+import { odysseySettings } from '../config/theme';
 
 const PostWrapper = styled.div`
     max-width: 800px;
     margin: auto;
-    padding: 20px;
-    padding-top: 120px;
+    padding-top: 60px;
 `;
 
 const FeaturedImage = styled.img`
     object-fit: cover;
     width: 100%;
+`;
 
+const PostContent = styled.div`
+    padding: 30px;
 `;
 
 const PostTitle = styled.h1`
     font-size: 30px;
     margin: 10px 0;
+    font-weight: 700;
 `;
 
 const PostSubtitle = styled.h3`
-    font-size: 20px;
-    opacity: 0.5;
+    font-size: 16px;
+    opacity: 0.3;
     font-family: sans-serif;
     font-weight: 500;
-    margin-bottom: 30px;
+    margin: 30px 0;
+`;
+
+const PostAuthor = styled.div`
+    margin: 20px 0;
 `;
 
 const PostBody = styled.p`
+    padding-bottom: 100px;
+    font-size: 25px;
+    line-height: 32px;
+`;
 
+const ButtonsHeader = styled.div`
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    z-index: 101000;
+    
+    button {
+        font-family: ${odysseySettings.bodyFont};
+        font-size: 15px;
+        margin: 20px;
+        padding: 15px;
+        width: 80px !important;
+        border-radius: 100px;
+        cursor: pointer;
+
+        border: 1px solid ${odysseySettings.fadeLinesColor};
+        display: inline-block;
+        width: 280px;
+        text-align: center;
+        padding: 10px 0;
+        color: black;
+        transition: all ease 0.4s;
+            
+        &:hover {
+            background-color: ${odysseySettings.primaryColor};
+            color: ${odysseySettings.backgroundColor};
+            transition: all ease 0.4s;
+        }
+    }
 `;
 
 const PostTemplate = (props) => {
 
-    const {titlePost, descPost, nameUser, postText} = props.data;
+    const {titlePost, descPost, nameUser, postText, postTimeData,postCoverImg} = props.data;
 
     console.log(props.data);
 
@@ -82,17 +89,22 @@ const PostTemplate = (props) => {
         window.history.back();
     }
 
+    console.log('LETSSEE', props);
+
     return (
         <React.Fragment>
-            <Header>
-                <SVG><svg onClick={goBack} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg></SVG>
-                <img src={Logo} />
-            </Header>
+            <HeaderLogo/>
+            <ButtonsHeader>
+                <button variant="primary" body="Go Back" onClick={() => goBack()}>Back</button>
+            </ButtonsHeader>
             <PostWrapper>
-                <FeaturedImage src="https://picsum.photos/1920/1080" />
-                <PostTitle>{titlePost}</PostTitle>
-                <PostSubtitle>{descPost}</PostSubtitle>
-                <PostBody>{postText}</PostBody>
+                <FeaturedImage src={postCoverImg !== "" ? "http://localhost:8888/odyssey-api/demo_react/api/images/posts/" + postCoverImg : "http://localhost:8888/odyssey-api/demo_react/api/images/posts/no-cover.jpg"} />
+                <PostContent>
+                    <PostTitle>{titlePost}</PostTitle>
+                    <PostSubtitle>{descPost}</PostSubtitle>
+    <PostAuthor>{nameUser} • {postTimeData}</PostAuthor>
+                    <PostBody>{postText}</PostBody>
+                </PostContent>
             </PostWrapper>
         </React.Fragment>
     )

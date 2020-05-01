@@ -37,7 +37,6 @@ const PostPreviewFooter = (props) => {
             opacity: 1;
         }
     `;
-    console.log(props);
     return (
     
         <PostPreviewFooter>
