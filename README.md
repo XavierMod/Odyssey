@@ -1,5 +1,10 @@
 ## Project information
 
+Student: Xavier Bardaji Gallardo
+University: Brunel University London
+Degree: Digital Design Year 2
+Module: Mobile Web application project
+
 Odyssey is a web full-stack social media application for adventurers, travelers… who want to share their most exciting adventures with their friends or the world. This is a University assignment forth server-side and mobile web development subjects, and with this project, I hope to demonstrate my understanding of client-side and server-side technologies for mobile web application development.
 
 This repository only includes Front-End Development files. To run this project, the web server implementation needs to be executed on another port. 
