@@ -65,9 +65,7 @@ class SignupForm extends Component {
         formData.append("content", JSON.stringify(this.state.auth));
         axios.post('http://localhost:8888/odyssey-api/demo_react/api/endpoints/signup.php', formData)
           .then(response => {
-              console.log(response);
             if (response.data.id == 'email-taken') {
-                console.log(response)
                 this.setState({errorEmail: {isError: true, bodyError: response.data.message}})
             } else if (response.data.id == 'username-taken') {
                 this.setState({errorUsername: {isError: true, bodyError: response.data.message}})
@@ -88,7 +86,6 @@ class SignupForm extends Component {
     validation = () => {
         if (checkEmptyFields({...this.state.auth}) && validateEmail(this.state.auth.email)) {
             this.setState({validated: true})
-            console.log(this.state.validated)
         } else {
             this.setState({validated: false})
 
@@ -98,13 +95,10 @@ class SignupForm extends Component {
     onChange(el, type) {
         if (type == "email") {
             this.setState({auth: {...this.state.auth, email: el.value}})
-            console.log(this.state);
         } else if (type == "password") {
             this.setState({auth: {...this.state.auth, password: el.value}})
-            console.log(this.state);
         } else if (type == 'username') {
             this.setState({auth: {...this.state.auth, username: el.value.toLowerCase()}})
-            console.log(this.state);
         } 
         this.validation();
     }
@@ -113,7 +107,7 @@ class SignupForm extends Component {
         return (
             <React.Fragment>
             <IMG src="https://opendoodles.s3-us-west-1.amazonaws.com/unboxing.svg" />
-            <MainTitle body="Sign in"/>
+            <MainTitle body="Sign up"/>
         <FORM noValidate autoComplete="on">
             <TextField showError={this.state.errorUsername.isError} bodyError={this.state.errorUsername.bodyError} onChange={(el) => this.onChange(el, "username")} type="text" label="Your Username" />
             <TextField showError={this.state.errorEmail.isError} bodyError={this.state.errorEmail.bodyError} onChange={(el) => this.onChange(el, "email")} fieldType="email" type="email" label="Your Email" />

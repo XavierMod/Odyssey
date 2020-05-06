@@ -10,14 +10,12 @@ const NoResultsFound = styled.span`
 
 const PostsResults = (props) => {
     const renderQueries = () => {
-        console.log('FROM RESULTS', props)
         let render;
         if (props.renderQuery !== undefined && props.renderQuery.length == []) {
             return <NoResultsFound>No results found</NoResultsFound>
 
         } else if (props.renderQuery !== undefined) {
             render = props.renderQuery.map((el, ind, obj) => {
-                console.log(el)
                 return (
                     <PostPreview activeUserProfile={props.activeUserProfile[0]} data={el} />
                 )

@@ -65,13 +65,10 @@ class SigninForm extends Component {
     }
 
     onChange(el, type) {
-        console.log(el, type);
         if (type == "email") {
             this.setState({auth: {...this.state.auth, email: el.value}})
-            console.log(this.state);
         } else if (type == "password") {
             this.setState({auth: {...this.state.auth, password: el.value}})
-            console.log(this.state);
         }
     }
 
@@ -80,7 +77,6 @@ class SigninForm extends Component {
         formData.append("content", JSON.stringify(this.state.auth));
         axios.post('http://localhost:8888/odyssey-api/demo_react/api/endpoints/signin.php', formData)
           .then(response => {
-              console.log(response);
               if (response.data.id == 'wrong-password') {
                 this.setState({errorLogin: {isError: true, bodyError: response.data.message}})
               } else if (response.data.id == 'login-success') {

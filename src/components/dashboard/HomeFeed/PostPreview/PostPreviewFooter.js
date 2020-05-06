@@ -6,6 +6,7 @@ import { odysseySettings } from '../../../../config/theme';
 const PostPreviewFooter = (props) => {
     const PostPreviewFooter = styled.div`
         padding: 25px;
+        word-wrap: break-word;
 
         h1 {
             font-family: ${odysseySettings.headingFont};
@@ -35,13 +36,22 @@ const PostPreviewFooter = (props) => {
         p {
             margin-right: 20px;
             opacity: 1;
+            text-overflow:    ellipsis;    /* IE, Safari (WebKit), Opera >= 11, FF > 6 */
         }
     `;
+
+    const trimText = (text, length) => {
+        if (text.length > length) {
+            return text.substring(0, length) + '...';
+        } else {
+            return text
+        }
+    }
     return (
     
         <PostPreviewFooter>
-            <h1>{props.titlePost}</h1>
-            <p>{props.descPost}</p>
+            <h1>{trimText(props.titlePost, 60)}</h1>
+            <p>{trimText(props.descPost, 60)}</p>
             <PostPreviewInfo>
                 <p>{props.postTimeData}</p>
                 <p>{props.locationData}</p>

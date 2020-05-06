@@ -92,7 +92,6 @@ class Settings extends Component {
 
     activateSettings = () => {
         this.setState({isActive: !this.state.isActive});
-        console.log(this.props.privateProfile)
     }
 
     logOut = () => {

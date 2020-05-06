@@ -44,7 +44,6 @@ const HeaderLogo = ( props ) => {
             Promise.all([
                 axios.post('http://localhost:8888/odyssey-api/demo_react/api/endpoints/getProfileByNameUser.php', formData)
             ]).then(([r1]) => {
-                console.log(r1.data)
                 setProfileImage(r1.data[0].profileImg);
                 setUserFriends(r1.data[0].friends !== null ? r1.data[0].friends : '');
             })

@@ -29,8 +29,7 @@ const PostPreviewWrapper = styled.div`
 `;
 
 const PostPreview = (props) => {
-    console.log('FROM PostPreview', props);
-    console.log('FROM PostPreview', props.activeUserProfile);
+    console.log('IMAGE', props.data.postCoverImg);
     return (
         <PostPreviewWrapper>
             <PostPreviewLike likedPostsActiveUser={props.activeUserProfile.likedPosts} userInfo={props.data} />

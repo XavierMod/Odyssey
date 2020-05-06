@@ -29,7 +29,6 @@ const AccountResults = (props) => {
 
         } else if (props.renderQuery !== undefined) {
             render = props.renderQuery.map((el, ind, obj) => {
-                console.log(el)
                 return (
                     <ProfileFound>
                         <Link to={"/user/" + el.nameUser}>

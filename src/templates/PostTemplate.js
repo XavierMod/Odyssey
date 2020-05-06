@@ -9,11 +9,13 @@ const PostWrapper = styled.div`
     max-width: 800px;
     margin: auto;
     padding-top: 60px;
+    word-wrap: break-word;
 `;
 
 const FeaturedImage = styled.img`
     object-fit: cover;
     width: 100%;
+    height: 500px;
 `;
 
 const PostContent = styled.div`
@@ -89,8 +91,6 @@ const PostTemplate = (props) => {
         window.history.back();
     }
 
-    console.log('LETSSEE', props);
-
     return (
         <React.Fragment>
             <HeaderLogo/>
@@ -98,7 +98,7 @@ const PostTemplate = (props) => {
                 <button variant="primary" body="Go Back" onClick={() => goBack()}>Back</button>
             </ButtonsHeader>
             <PostWrapper>
-                <FeaturedImage src={postCoverImg !== "" ? "http://localhost:8888/odyssey-api/demo_react/api/images/posts/" + postCoverImg : "http://localhost:8888/odyssey-api/demo_react/api/images/posts/no-cover.jpg"} />
+                <FeaturedImage src={props.postCoverImg !== "" ? "http://localhost:8888/odyssey-api/demo_react/api/images/posts/" + postCoverImg : "http://localhost:8888/odyssey-api/demo_react/api/images/posts/no-cover.jpg"} />
                 <PostContent>
                     <PostTitle>{titlePost}</PostTitle>
                     <PostSubtitle>{descPost}</PostSubtitle>

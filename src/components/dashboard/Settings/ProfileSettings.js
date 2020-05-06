@@ -86,8 +86,6 @@ const ProfileSettings = (props) => {
         formData.append("coverImage", event.target.elements.coverImage.files[0]);
         formData.append("privateProfile", profileBoolean);
 
-        console.log(profileBoolean);
-
         axios.post("http://localhost:8888/odyssey-api/demo_react/api/endpoints/addInformationUser.php?nameUser=" + UserToken('get') , formData)
           .then(response => {
               window.location.reload(false);

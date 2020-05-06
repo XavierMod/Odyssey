@@ -27,7 +27,6 @@ class GoogleSignIn extends Component {
 
   onSuccess(googleUser) {
     const profile = googleUser.getBasicProfile();
-    console.log(profile);
   }
 
   render() {

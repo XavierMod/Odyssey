@@ -45,8 +45,6 @@ class PostsBlock extends Component {
                 response.data[0].likedPosts = '';
               }
 
-            console.log('From PostsBlock - POST REQ', response.data[0]);
-            console.log(this.props.mainUserProfile);
             this.setState({activeUserProfile: response.data[0]}, () => {
                 this.setState({isLoading: false})
             })
@@ -94,7 +92,6 @@ class PostsBlock extends Component {
                 return (<PostPreview activeUserProfile={this.state.activeUserProfile} postsLength={this.props.posts.length} data={el} />)
             });
         } else if (finalQuery.length == 0) {
-            console.log('check if it reads', this.state.activeUserProfile.likedPosts);
             return this.props.posts.map((el, ind) => {
                 return (<PostPreview activeUserProfile={this.state.activeUserProfile} postsLength={this.props.posts.length} data={el} />)
             })
@@ -109,7 +106,6 @@ class PostsBlock extends Component {
         if (this.state.isLoading) {
             return <div />
         }
-        console.log('FROM PostsBlock', this.state.activeUserProfile);
         return (
             <PostsBlockWrapper>
                 <Filter sendFinalQuery={(el) => this.getFinalQuery(el)}/>

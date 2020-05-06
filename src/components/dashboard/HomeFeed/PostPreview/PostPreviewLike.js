@@ -97,11 +97,6 @@ class PostPreviewLike extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
-        console.log('FROM PostPreviewLike', this.props.likedPostsActiveUser);
-        console.log('FROM PostPreviewLike', this.props.userInfo.likes);
-
-
         if (this.props.likedPostsActiveUser !== '') {
             let arrayLikedPosts = this.props.likedPostsActiveUser.split(', ');
 
@@ -123,7 +118,6 @@ class PostPreviewLike extends Component {
             //HERE THE POSTID IS INCLUDED IN THE DB
             parsedNumbers = Number(this.props.userInfo.likes);
             parsedNumbers--;
-            console.log(parsedNumbers.toString());
             hasActiveUserLiked = "0";
 
             if (this.props.likedPostsActiveUser !== '') {
@@ -147,7 +141,6 @@ class PostPreviewLike extends Component {
            //HERE THE POSTID IS NOT INCLUDED IN THE DB
             parsedNumbers = Number(this.props.userInfo.likes);
             parsedNumbers++;
-            console.log(parsedNumbers.toString());
             hasActiveUserLiked = "1"; 
 
             if (this.props.likedPostsActiveUser !== '') {
@@ -159,7 +152,6 @@ class PostPreviewLike extends Component {
 
             } else {
                 var arrayLikedPosts = [this.props.userInfo.idPost]
-                console.log(arrayLikedPosts);
                 newActiveUserLikedPostsString = arrayLikedPosts;
             }
 

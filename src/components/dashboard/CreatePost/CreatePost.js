@@ -139,7 +139,7 @@ class CreatePost extends Component {
                 <CreatePostContent style={{maxWidth: '700px', margin: 'auto'}}>
                     <TextField 
                     required
-                    maxLength={80}
+                    maxLength={200}
                     name="titlePost"
                     onChange={(el) => console.log(el)} 
                     type="text" 

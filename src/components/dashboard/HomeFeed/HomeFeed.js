@@ -78,12 +78,9 @@ class HomeFeed extends Component {
     componentDidMount() {
         if (navigator.geolocation) { //check if geolocation is available
             navigator.geolocation.getCurrentPosition(position => {
-              console.log(position);
-              console.log(position.coords.latitude);
 
              axios.post(`https://us1.locationiq.com/v1/reverse.php?key=59b97fa2604213&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`)
               .then(response => {
-                  console.log('GET TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT', response.data);
                   this.setState({userCity: response.data.address.city});
 
                 //Rendering nearby
@@ -121,7 +118,6 @@ class HomeFeed extends Component {
             formData.append("content", UserToken('get'));
             axios.post('http://localhost:8888/odyssey-api/demo_react/api/endpoints/fetchFeed.php', formData)
               .then(response => {
-                  console.log('PHP WORDS', response.data);
                   this.setState({posts: response.data});
               })
               .catch(function (error) {
@@ -160,7 +156,6 @@ class HomeFeed extends Component {
     }
 
     render() {
-        console.log('FROM HOMEFOED', this.state.posts);
         return (
                 <HomeFeedWrapper>
                      <HeaderLogo addSettings/>

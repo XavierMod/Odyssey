@@ -105,7 +105,6 @@ class Filter extends Component {
     }
 
     removeFilterTag = (query) => {
-        console.log(query)
         const mutatedState = this.state.finalQuery;
         
         mutatedState.forEach((el, ind, obj) => {
@@ -115,14 +114,12 @@ class Filter extends Component {
         })
 
         this.setState({finalQuery: mutatedState});
-        console.log(this.state.finalQuery);
     }
 
     renderFilterTags = () => {
         const mutatedState = this.state.finalQuery;
         return mutatedState.map((el, ind) => {
                 if (el.query.length > 15) {
-                    console.log(el.query.length);
                     el.query = el.query.substring(0, 10) + '...';
                 }
 

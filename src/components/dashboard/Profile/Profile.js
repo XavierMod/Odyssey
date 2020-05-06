@@ -23,11 +23,9 @@ class Profile extends Component {
 
     componentDidMount() {
         let formData = new FormData();
-        console.log(this.state.posts);
         formData.append("content", UserToken('get'));
         axios.post('http://localhost:8888/odyssey-api/demo_react/api/endpoints/fetchProfile.php', formData)
           .then(response => {
-              console.log(response.data);
               this.setState({posts: response.data});
           })
           .catch(function (error) {

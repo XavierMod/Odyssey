@@ -63,6 +63,10 @@ const Separator = styled.div`
     border-bottom: 1px solid ${odysseySettings.fadeLinesColor};
 `;
 
+const NameUser = styled.div`
+    text-align: center;
+    opacity: 0.5;
+`;
 
 class ProfileHeader extends Component {
     constructor(props) {
@@ -95,10 +99,6 @@ class ProfileHeader extends Component {
         var nonActiveUserFriendsString;
 
         if (type == 'follow') {
-
-            console.log('YEEEEEEEEEEEE', activeUserFriends, this.props.friends);
-
-            console.log(activeUserFriends.length);
 
             if (activeUserFriends.length !== 0) {
                 activeUserFriendsArr = activeUserFriends.split(', ');
@@ -194,7 +194,6 @@ class ProfileHeader extends Component {
     }
 
     render() {
-        console.log('from profile header', this.props);
         return (
             <React.Fragment>
               <HeaderLogo addSettings/>
@@ -205,6 +204,7 @@ class ProfileHeader extends Component {
                         <ProfileImage src={this.props.profileImg ? `http://localhost:8888/odyssey-api/demo_react/api/images/users/${this.props.profileImg}` : `http://localhost:8888/odyssey-api/demo_react/api/images/users/user-profile-default.png`} />
                     </FollowWrapper>
                     <MainTitle body={this.props.titleProfile !== null ? this.props.titleProfile : this.props.nameUser + "'s Profile"} />
+                    <NameUser>@{this.props.nameUser}</NameUser>
                     <ProfileStats>
                         <ProfileStatsBlock top={this.props.friends.length !== 0 ? this.props.friends.split(', ').length : '0'} bottom={'Friends'}  />
                         <ProfileStatsBlock top={this.props.postsLength} bottom={'Posts'}  />

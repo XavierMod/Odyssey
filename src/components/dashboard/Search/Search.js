@@ -152,7 +152,6 @@ class Search extends Component {
     }
 
     render() {
-        console.log(this.state.activated);
         return (
             <SearchWrapper>
                 <HeaderLogo addSettings/>
