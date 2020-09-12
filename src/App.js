@@ -1,6 +1,5 @@
 import React, { Component, Suspense } from 'react';
 import styled from 'styled-components';
-import './App.css';
 import axios from 'axios';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import OnboardingWrapper from './components/onboarding-journey/OnboardingWrapper';

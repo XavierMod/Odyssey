@@ -1,4 +1,7 @@
-// Main Signup component containing sign up options
+/*
+    File Description: Main Signup component containing sign up options.
+    Notes: Part of the ONBOARDING JOURNEY. 
+*/
 
 import React, { Component } from 'react';
 import styled from 'styled-components';

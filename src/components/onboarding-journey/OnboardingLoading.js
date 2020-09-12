@@ -1,9 +1,13 @@
+/*
+    File Description: Creates the loading page when a user signs up.
+    Notes: Part of the ONBOARDING JOURNEY. 
+*/
+
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import LoadingSpinner from '../library/LoadingSpinner';
 import LoadingGIF from '../../assets/odyssey/onboarding-loading.gif';
-
-// GIF by gloriapittmann.tumblr.com/
 
 const LoadingWrapper = styled.div`
     text-align: center;
@@ -26,10 +30,6 @@ const IMG = styled.img`
     width: 400px;
     max-width: 60%;
     padding-top: 60px;
-`;
-
-const Copyright = styled.p`
-    font-size: 8px;
 `;
 
 class OnboardingLoading extends Component {

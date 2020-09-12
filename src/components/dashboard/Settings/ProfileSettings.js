@@ -1,3 +1,8 @@
+/*
+    File Description: Renders profile settings on the settings menu.
+    Notes: This component is only present on the settings menu
+*/
+
 import React from 'react'
 import styled from 'styled-components'
 import ButtonToggle from '../../library/Buttons/ButtonToggle'
@@ -5,6 +10,8 @@ import TextField from '../../library/Form/TextField'
 import UserToken from '../../../services/UserToken';
 import axios from 'axios';
 import ImageUpload from '../../helpers/ImageUpload'
+
+// Defining component styling
 
 const SettingsBlockRow = styled.div`
     align-items: center;
@@ -77,6 +84,7 @@ const ProfileSettings = (props) => {
         console.log(el)
     }
 
+    // Sends changes to the back-end when pressing on Save Changes
     const sendUserInfoData = (event) => {
         event.preventDefault()
         let formData = new FormData();

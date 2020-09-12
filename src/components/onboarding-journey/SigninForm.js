@@ -1,3 +1,9 @@
+/*
+    File Description: Sign in form.
+    Notes: Part of the ONBOARDING JOURNEY. 
+*/
+
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import TextField from '../library/Form/TextField';
@@ -72,6 +78,7 @@ class SigninForm extends Component {
         }
     }
 
+    // Sending data to the server
     sendLoginData = () => {
         let formData = new FormData();
         formData.append("content", JSON.stringify(this.state.auth));

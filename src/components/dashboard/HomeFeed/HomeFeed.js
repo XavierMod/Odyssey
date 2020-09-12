@@ -1,15 +1,19 @@
+/*
+    File Description: Renders the Home Feed page. 
+    Notes: KEY component
+*/
+
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import HeaderLogo from '../../library/Headers/HeaderLogo';
-import PostPreview from './PostPreview/PostPreview';
 import Layout from '../../library/Layout';
 import PostsBlock from './PostsBlock';
 import UserToken from '../../../services/UserToken';
 import axios from 'axios';
 
-const HomeFeedWrapper = styled.div`
-`;
+// Defining component styles
+
+const HomeFeedWrapper = styled.div``;
 
 const IMG = styled.img`
     width: 130px;
@@ -83,7 +87,7 @@ class HomeFeed extends Component {
               .then(response => {
                   this.setState({userCity: response.data.address.city});
 
-                //Rendering nearby
+                // Rendering nearby options
 
                 let formData = new FormData();
                 formData.append("content", response.data.address.city);

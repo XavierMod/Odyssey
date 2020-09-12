@@ -1,5 +1,9 @@
+/*
+    File Description: Component that will redirect the user to the onboarding journey if they have not registered or signed in yet.
+    Notes: - 
+*/
+
 import React from 'react'
-import styled from 'styled-components'
 
 const AuthVerification = (props) => {
     return (

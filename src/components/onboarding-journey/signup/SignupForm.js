@@ -1,4 +1,7 @@
-// Signup Form that handles database checking
+/*
+    File Description: Signup Form that handles database checking.
+    Notes: Part of the ONBOARDING JOURNEY. 
+*/
 
 import React, { Component } from 'react';
 import styled, {css} from 'styled-components';
@@ -60,6 +63,7 @@ class SignupForm extends Component {
         }
     }
 
+    // Sends form input to the back-end and renders the interface depending on the server response
     sendData = () => {
         let formData = new FormData();
         formData.append("content", JSON.stringify(this.state.auth));
@@ -83,6 +87,7 @@ class SignupForm extends Component {
     }
 
 
+    // Validates and checks for empty files
     validation = () => {
         if (checkEmptyFields({...this.state.auth}) && validateEmail(this.state.auth.email)) {
             this.setState({validated: true})

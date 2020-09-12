@@ -1,3 +1,8 @@
+/*
+    File Description: Defines a title.
+    Notes: LIBRARY component. 
+*/
+
 import React from 'react';
 import styled from 'styled-components';
 import {odysseySettings} from '../../../config/theme';

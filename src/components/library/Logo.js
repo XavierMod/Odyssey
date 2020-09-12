@@ -1,3 +1,8 @@
+/*
+    File Description: Logo.
+    Notes: LIBRARY component. 
+*/
+
 import React from 'react';
 import LogoSource from '../../assets/odyssey/odyssey-logo.svg';
 

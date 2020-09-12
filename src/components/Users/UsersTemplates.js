@@ -1,3 +1,9 @@
+/*
+    File Description: Component that generates all routes for both posts and users templates, based on the files on the templates folder.
+    Notes: KEY component. 
+*/
+
+
 import React, { Component } from 'react'
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import PostTemplate from '../../templates/PostTemplate';
@@ -12,6 +18,7 @@ class UsersTemplates extends Component {
         profiles: []
     }
 
+    // Fetches all posts and profiles on the database
     componentDidMount() {
         Promise.all([
             axios.get('http://localhost:8888/odyssey-api/demo_react/api/endpoints/getAllPosts.php'),
@@ -24,7 +31,6 @@ class UsersTemplates extends Component {
     }
 
     render() {
-        console.log(this.state.posts);
         const postTemplates = this.state.posts.map((el, ind, arr) => {
             return <Route key={el.id} path={this.props.match.url + "/" + el.nameUser + "/" + el.slugPost} exact
             render={() => 

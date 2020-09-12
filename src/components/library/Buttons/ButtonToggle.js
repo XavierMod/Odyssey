@@ -1,3 +1,8 @@
+/*
+    File Description: Creates a toggle button.
+    Notes: LIBRARY component. 
+*/
+
 import React from 'react';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import styled from 'styled-components'

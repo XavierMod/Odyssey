@@ -1,6 +1,13 @@
+/*
+    File Description: Component that displays a list of usernames when searching for account results.
+    Notes: This is a child component from Search.js
+*/
+
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
+
+// Defining component styles
 
 const NoResultsFound = styled.span`
     font-size: 20px;
@@ -22,6 +29,7 @@ const ProfileFound = styled.div`
 
 const AccountResults = (props) => {
 
+    // Rendering the results based on the user input
     const renderQueries = () => {
         let render;
         if (props.renderQuery !== undefined && props.renderQuery.length == []) {

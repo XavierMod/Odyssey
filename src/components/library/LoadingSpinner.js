@@ -1,3 +1,8 @@
+/*
+    File Description: Loading Spinner.
+    Notes: LIBRARY component. 
+*/
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { odysseySettings } from '../../config/theme';

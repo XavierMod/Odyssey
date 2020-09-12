@@ -1,3 +1,8 @@
+/*
+    File Description: Shows error messages / labels on text fields.
+    Notes: LIBRARY component. 
+*/
+
 import React from 'react'
 import styled from 'styled-components'
 

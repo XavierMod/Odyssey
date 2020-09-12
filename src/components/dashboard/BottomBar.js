@@ -1,5 +1,9 @@
+/*
+    File Description: KEY Bottom Bar component.
+    Notes: KEY component. 
+*/
+
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import { odysseySettings } from '../../config/theme';
 import { NavLink } from 'react-router-dom';
@@ -9,9 +13,9 @@ import IconHome from '../../assets/icons/bar/bottom-bar-home.svg';
 import IconOdyssey from '../../assets/icons/bar/bottom-bar-odyssey.png';
 import IconPlusCircle from '../../assets/icons/bar/bottom-bar-plus-circle.svg';
 import IconSearch from '../../assets/icons/bar/bottom-bar-search.svg';
-import IconSettings from '../../assets/icons/bar/bottom-bar-settings.svg';
 import IconBell from '../../assets/icons/bell-outline.svg';
 
+// Defining component styling
 
 const BottomBarWrapper = styled.div`
     border-top: 1px solid ${odysseySettings.fadeLinesColor};

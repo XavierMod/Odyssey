@@ -1,8 +1,15 @@
+/*
+    File Description: Renders and adds likes functionality to a PostPreview block. 
+    Notes: This is a child component of PostPreview.js
+*/
+
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import heartIcon from '../../../../assets/icons/heart.svg';
 import axios from 'axios'
 import UserToken from '../../../../services/UserToken';
+
+// Defining component styles
 
 const PostPreviewLikeWrapper = styled.div`
     display: flex;
@@ -87,6 +94,7 @@ const LikesNumber = styled.div`
 `;
 
 class PostPreviewLike extends Component {
+    // Getting all the necessary data from the parent component
     constructor(props) {
         super(props);
         this.state = {
@@ -96,6 +104,7 @@ class PostPreviewLike extends Component {
         } 
     }
 
+    // After rendering, set state of liked post based on if the post has already been liked
     componentDidMount() {
         if (this.props.likedPostsActiveUser !== '') {
             let arrayLikedPosts = this.props.likedPostsActiveUser.split(', ');
@@ -108,6 +117,7 @@ class PostPreviewLike extends Component {
         }
     }
 
+    // Handles the click functionality when a heart icon gets clicked
     handleClick = () => {
         
         let parsedNumbers;
@@ -115,7 +125,7 @@ class PostPreviewLike extends Component {
         let newActiveUserLikedPostsString;
 
         if (this.state.likeState) {
-            //HERE THE POSTID IS INCLUDED IN THE DB
+            // HERE THE postID IS INCLUDED IN THE DB
             parsedNumbers = Number(this.props.userInfo.likes);
             parsedNumbers--;
             hasActiveUserLiked = "0";
@@ -138,7 +148,7 @@ class PostPreviewLike extends Component {
 
             this.setState({likes: parsedNumbers});   
         } else {
-           //HERE THE POSTID IS NOT INCLUDED IN THE DB
+           //HERE THE postID IS NOT INCLUDED IN THE DB
             parsedNumbers = Number(this.props.userInfo.likes);
             parsedNumbers++;
             hasActiveUserLiked = "1"; 

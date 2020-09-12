@@ -1,8 +1,11 @@
+/*
+    File Description: Component that appears when there are no posts to show. 
+    Notes: -
+*/
+
 import React from 'react';
-import NoMorePostsGif from '../../../assets/odyssey/no-posts-gif.gif';
 import styled from 'styled-components';
 import MainTitle from '../../library/Styles/MainTitle';
-import Button from '../../library/Buttons/Button';
 
 const NoMorePostsWrapper = styled.div`
     text-align: center;

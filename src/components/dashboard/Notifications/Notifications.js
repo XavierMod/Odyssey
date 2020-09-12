@@ -1,9 +1,14 @@
+/*
+    File Description: Renders the notifications page. 
+    Notes: KEY Component 4/4 from the main bottom navbar. 
+    Status: NOT FINISHED.
+*/
+
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
-import MainTitle from '../../library/Styles/MainTitle';
-import {odysseySettings} from '../../../config/theme';
 import HeaderLogo from '../../library/Headers/HeaderLogo';
+
+// Defining component styles
 
 const NotificationsWrapper = styled.div`
     text-align: center;

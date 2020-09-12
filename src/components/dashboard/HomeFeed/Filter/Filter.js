@@ -1,6 +1,13 @@
+/*
+    File Description: Main wrapper for Odyssey's filter, used to filter and sort posts. 
+    Notes: -
+*/
+
 import React, {Component} from 'react'
 import styled from 'styled-components'
 import FilterBlock from './FilterBlock'
+
+// Defining component styles
 
 const FilterMain = styled.div`
     max-width: 550px;
@@ -87,10 +94,12 @@ class Filter extends Component {
         } 
     }
 
+    // Displaying or hiding the filter
     activateFilter = () => {
         this.setState({filterActive: !this.state.filterActive})
     }
 
+    // Getting the sorting action
     getSortingAction = (el) => {
         
         const mutatedState = this.state.finalQuery;
@@ -104,6 +113,7 @@ class Filter extends Component {
         this.setState({finalQuery: mutatedState});
     }
 
+    // Handling functionality when removing a filter
     removeFilterTag = (query) => {
         const mutatedState = this.state.finalQuery;
         
@@ -116,6 +126,7 @@ class Filter extends Component {
         this.setState({finalQuery: mutatedState});
     }
 
+    // Rendering all selected tags
     renderFilterTags = () => {
         const mutatedState = this.state.finalQuery;
         return mutatedState.map((el, ind) => {
@@ -132,7 +143,7 @@ class Filter extends Component {
     }
 
     render() {
-
+        
         return (
             <React.Fragment>
                 <FilterMain>

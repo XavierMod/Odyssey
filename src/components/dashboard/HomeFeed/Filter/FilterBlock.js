@@ -1,5 +1,12 @@
+/*
+    File Description: Renders all three different filtering options
+    Notes: Child component from the Filter.js parent
+*/
+
 import React, {Component} from 'react'
 import styled from 'styled-components'
+
+// Defining component styles
 
 const FilterBlockWrapper = styled.div`
     align-items: center;
@@ -63,10 +70,12 @@ class FilterBlock extends Component {
         } 
     }
 
+    // Opens the filter block modal
     openModal = () => {
         this.setState({isModalOpen: !this.state.isModalOpen})
     }
 
+    // Sends filter block action to parent
     sendAction = (el, isTags) => {
         const query = {
             type: this.props.type,
@@ -75,6 +84,7 @@ class FilterBlock extends Component {
         this.props.getActionFromBlock(query);
     }
 
+    // Renders types of filtering blocks depending on props
     renderModal = () => {
         if (this.props.type == 'Date') {
             return (

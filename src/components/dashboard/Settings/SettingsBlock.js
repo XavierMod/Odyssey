@@ -1,6 +1,12 @@
+/*
+    File Description: Settings block template.
+    Notes: Only seen on settings menu. 
+*/
+
 import React from 'react'
 import styled from 'styled-components'
-import ButtonToggle from '../../library/Buttons/ButtonToggle'
+
+// Defining component styles
 
 const SettingsBlockWrapper = styled.div`
     padding: 20px;
@@ -31,9 +37,7 @@ const SettingsBlockTitle = styled.h3`
     flex: 90%;
 `;
 
-const SettingsBlockContent = styled.div`
-
-`;
+const SettingsBlockContent = styled.div``;
 
 const SettingsBlock = (props) => {
     const [active, setActive] = React.useState(props.visibility);

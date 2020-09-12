@@ -1,3 +1,8 @@
+/*
+    File Description: Main Layout component that wraps elements and sets a max-width.
+    Notes: LIBRARY component. 
+*/
+
 import React from 'react';
 import styled from 'styled-components';
 import {odysseySettings} from '../../config/theme';

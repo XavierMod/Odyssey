@@ -1,3 +1,8 @@
+/*
+    File Description: Helper to work with media queries.
+    Notes: Handles all media queries rules. 
+*/
+
 import { css } from 'styled-components';
 
 export const sizes = {

@@ -1,3 +1,9 @@
+/*
+    File Description: Key theme options.
+    Notes: KEY File. 
+*/
+
+
 export const odysseySettings = {
     primaryColor: "rgb(0, 0, 0)",
     backgroundColor: "rgb(255, 255, 255)",

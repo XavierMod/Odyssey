@@ -1,8 +1,14 @@
+/*
+    File Description: Component that provides the Image uploading functionality
+    Notes: Modifies the existing ImageUploader component. 
+*/
+
 import React from 'react';
 import ImageUploader from 'react-images-upload';
 import styled from 'styled-components';
 import {odysseySettings} from '../../config/theme';
 
+// Styles the existing ImageUploader component
 const ImageUploaderWrapper = styled.div`
     .fileContainer {
         padding: 0;
@@ -57,10 +63,12 @@ class ImageUpload extends React.Component {
          this.onDrop = this.onDrop.bind(this);
     }
 
+    // Sends the image to the parent component so it can be sent to the server
     sendDateParent(date) {
         this.props.getDateChild(date);
     }
  
+    // Changes visual elements when image has been deployed
     onDrop(pic) {
         this.setState({
             picture: pic,

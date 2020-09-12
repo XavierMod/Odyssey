@@ -1,6 +1,10 @@
+/*
+    File Description: Component that renders a list of friends on the settings menu.
+    Notes: This component is only present on the settings menu
+*/
+
 import React, {Component} from 'react';
 import styled from 'styled-components'
-import ButtonToggle from '../../library/Buttons/ButtonToggle';
 import { Link } from 'react-router-dom';
 
 const FriendsWrapper = styled.div`
@@ -37,14 +41,7 @@ class Friends extends Component {
         friends: this.props.userFriends
     }
 
-    sendFriendRequest = (el) => {
-        console.log(el)
-    }
-
-    processFriends = (el) => {
-        console.log(this.state);
-    }
-    
+    // Takes the friends string, splits it into an array and renders all friends on a list    
     renderFriends = () => {
         if (this.props.userFriends.length > 1) {
             return this.props.userFriends.split(', ').map((el, ind, arr) => {

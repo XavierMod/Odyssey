@@ -1,3 +1,8 @@
+/*
+    File Description: Creates a text field.
+    Notes: LIBRARY component. 
+*/
+
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import styled from 'styled-components';
@@ -64,6 +69,7 @@ class BasicTextFields extends Component {
         }
     }
 
+    // Validating the email structure and adding a check
     validateEmail = ( input ) => {
         if (FormServices.validateEmail(input.value)) {
             this.setState({validationIcon: true})
@@ -72,6 +78,7 @@ class BasicTextFields extends Component {
         }
     }
 
+    // Using Regex to validate the strength of the password
     validatePassword = ( input ) => {
         var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
         var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
@@ -88,6 +95,7 @@ class BasicTextFields extends Component {
         }
     }
 
+    // Renders different types of fields based on props
     render() {
         if (this.props.fieldType == 'email') {
             return (

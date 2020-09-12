@@ -1,3 +1,8 @@
+/*
+    File Description: Renders the featured image of a Post Preview Block. 
+    Notes: This is a child component of PostPreview.js
+*/
+
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
@@ -10,12 +15,12 @@ const MainBG = styled.div`
 const PostPreviewImageWrapper = styled.div`
     height: 100%;
     background-image: 
-    /* top, transparent red */
+    /* top, opacity layer */
     linear-gradient(
     rgba(0, 0, 0, 0.15), 
     rgba(0, 0, 0, 0.15)
     ),
-    /* your image */
+    /* featured image */
     url(${props => props.image});
     background-size: cover;
     background-position: center center;
@@ -44,6 +49,7 @@ const TagsWrapper = styled.div`
 `;
 
 class PostPreviewImage extends Component {
+    // Splits string tags into a loopable array;
     renderTags = () => {
         var res = this.props.tags.split(", ");
         return res;

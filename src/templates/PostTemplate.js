@@ -1,3 +1,8 @@
+/*
+    File Description: Component used to render posts pages.
+    Notes: TEMPLATE. 
+*/
+
 import React from 'react'
 import styled from 'styled-components'
 import Logo from '../assets/odyssey/odyssey-logo.svg';

@@ -1,9 +1,16 @@
+/*
+    File Description: Renders the main app header with Odyssey logo and profile picture.
+    Notes: Can be used without a profile picture. 
+*/
+
 import React, { useState, useEffect } from 'react';
 import Logo from '../Logo';
 import styled from 'styled-components';
 import Settings from '../../dashboard/Settings/Settings';
 import UserToken from '../../../services/UserToken';
 import axios from 'axios'
+
+// Defining component styles
 
 const HeaderWrapper = styled.div`
     overflow: hidden;

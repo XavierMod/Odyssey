@@ -1,7 +1,10 @@
+/*
+    File Description: Rendering the stats on the profile page: number of friends and posts
+    Notes: This is a child component from ProfileHeader.js
+*/
+
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
-import { odysseySettings } from '../../../config/theme';
 
 const ProfileStatsBlockWrapper = styled.div`
     flex: 33.33%;
@@ -14,8 +17,6 @@ const ProfileStatsBlockWrapper = styled.div`
     p {
         padding-top: 10px;
     }
-
-
 `;
 
 class ProfileStatsBlock extends Component {

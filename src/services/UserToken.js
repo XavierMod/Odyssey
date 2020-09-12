@@ -1,3 +1,8 @@
+/*
+    File Description: Gets user.
+    Notes: KEY File. 
+*/
+
 const UserToken = (type, body) => {
     if (type == 'set') {
         window.localStorage.clear();

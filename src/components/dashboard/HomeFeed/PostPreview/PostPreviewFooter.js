@@ -1,7 +1,14 @@
+/*
+    File Description: Renders the Footer of a Post Preview Block. 
+    Notes: This is a child component of PostPreview.js
+*/
+
 import React from 'react';
 import styled from 'styled-components';
 import PostPreviewLike from './PostPreviewLike';
 import { odysseySettings } from '../../../../config/theme';
+
+// Defining component styles
 
 const PostPreviewFooter = (props) => {
     const PostPreviewFooter = styled.div`
@@ -23,11 +30,6 @@ const PostPreviewFooter = (props) => {
         }
     `;
 
-    const Separator = styled.div`
-        border-bottom: 1px solid ${odysseySettings.fadeLinesColor};
-        margin: 10px 0;
-    `;
-
     const PostPreviewInfo = styled.div`
         width: 100%;
         display: flex;
@@ -36,10 +38,11 @@ const PostPreviewFooter = (props) => {
         p {
             margin-right: 20px;
             opacity: 1;
-            text-overflow:    ellipsis;    /* IE, Safari (WebKit), Opera >= 11, FF > 6 */
+            text-overflow: ellipsis;    /* IE, Safari (WebKit), Opera >= 11, FF > 6 */
         }
     `;
 
+    // Trims text of both title and description
     const trimText = (text, length) => {
         if (text.length > length) {
             return text.substring(0, length) + '...';
@@ -48,7 +51,7 @@ const PostPreviewFooter = (props) => {
         }
     }
     return (
-    
+
         <PostPreviewFooter>
             <h1>{trimText(props.titlePost, 60)}</h1>
             <p>{trimText(props.descPost, 60)}</p>

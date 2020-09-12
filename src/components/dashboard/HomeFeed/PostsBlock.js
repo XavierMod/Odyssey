@@ -1,32 +1,23 @@
+/*
+    File Description: Component that handles the posts fetching and renders a list of posts. 
+    Notes: KEY component
+*/
+
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
-import HeaderLogo from '../../library/Headers/HeaderLogo';
 import PostPreview from './PostPreview/PostPreview';
-import Layout from '../../library/Layout';
-import { odysseySettings } from '../../../config/theme';
-import MainTitle from '../../library/Styles/MainTitle';
 import Filter from './Filter/Filter'
-import { ToastProvider, useToasts } from 'react-toast-notifications'
 import UserToken from '../../../services/UserToken';
+
+// Defining component styling
 
 const PostsBlockWrapper = styled.div`
     margin: 20px 0;
     padding-bottom: 40px;
 `;
 
-const BlockInfo = styled.div`
-    text-align: center;
-    padding-top: 10px;
-
-    p {
-        opacity: 0.3;
-    }
-`;
-
 class PostsBlock extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -36,6 +27,7 @@ class PostsBlock extends Component {
         } 
     }
 
+    // After render, get all posts from the active user and pass them to child components
     componentDidMount() {
         const formData = new FormData();
         formData.append("content", UserToken('get'));
@@ -54,6 +46,7 @@ class PostsBlock extends Component {
           }); 
     }
 
+    // Render all fetched posts
     renderPosts = (type) => {
         const finalQuery = [...this.state.finalQuery];
         const allPosts = [...this.props.posts];
@@ -98,6 +91,7 @@ class PostsBlock extends Component {
         }
     }
 
+    // Gets the query
     getFinalQuery = (el) => {
         this.setState({finalQuery: el});
     }

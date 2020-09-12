@@ -1,3 +1,8 @@
+/*
+    File Description: A React component that handles post creation. 
+    Notes: -
+*/
+
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import TextField from '../../library/Form/TextField';
@@ -9,6 +14,8 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ImageUpload from '../../helpers/ImageUpload'
 import axios from 'axios'
 import UserToken from '../../../services/UserToken';
+
+// Defining component styles
 
 const CreatePostWrapper = styled.form`
     height: 100%;
@@ -125,6 +132,7 @@ class CreatePost extends Component {
 
     render() {
         return (
+            //Post is wrapped within a form that will point to the API endpoint. Username is included on the route. 
             <CreatePostWrapper 
                 action={"http://localhost:8888/odyssey-api/demo_react/api/endpoints/createNewPost.php?nameUser=" + UserToken('get') }
                 method="POST"
@@ -144,7 +152,6 @@ class CreatePost extends Component {
                     onChange={(el) => console.log(el)} 
                     type="text" 
                     label="Post name" />
-
                     <TextField 
                         required
                         maxLength={100}
@@ -159,6 +166,7 @@ class CreatePost extends Component {
                         <TextareaAutosize
                         required
                         aria-label="minimum height"
+                        // Creating a simple function that gets the length of the input field
                         onChange={(el) => this.setState({wordCountPostBody: el.target.value.length})} 
                         name="postText"
                         maxLength="500"
@@ -169,10 +177,11 @@ class CreatePost extends Component {
                 </CreatePostContent>
 
                 <Post 
+                //Submit button of the form
                     opacity={this.state.date ? "1" : ".2"} 
                     events={this.state.date ? "all" : "none"} 
                     type="submit" name="submit">Post</Post>
-
+            
             </CreatePostWrapper>
         )
     }

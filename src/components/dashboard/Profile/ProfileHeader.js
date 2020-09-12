@@ -1,15 +1,20 @@
+/*
+    File Description: Component that renders the user profile.
+    Notes: This component is rendered on different unique routes
+*/
+
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../library/Buttons/Button';
 import ProfileStatsBlock from './ProfileStatsBlock';
 import { odysseySettings } from '../../../config/theme';
 import MainTitle from '../../library/Styles/MainTitle';
-import Settings from '../../dashboard/Settings/Settings';
 import HeaderLogo from '../../library/Headers/HeaderLogo';
 import UserToken from '../../../services/UserToken';
 import axios from 'axios'
-import { largerThan, smallerThan } from '../../helpers/mediaQueries'; 
+import { largerThan, smallerThan } from '../../helpers/mediaQueries';
+
+// Defining component styles
 
 const ProfileHeaderWrapper = styled.div`
     padding-top: 70px;
@@ -76,6 +81,7 @@ class ProfileHeader extends Component {
         }
     }
 
+    // Getting the name of the active user 
     activeUserNewFollow = (type) => {
         let formData = new FormData();
         formData.append("content", UserToken('get'));
@@ -92,6 +98,7 @@ class ProfileHeader extends Component {
         })
     }
 
+    // Changing the string that contains the friends of the active user depending if they like the post or not
     mutateFriends = (type, activeUserFriends) => {
         var activeUserFriendsArr;
         var nonActiveUserFriendsArr;
@@ -158,6 +165,7 @@ class ProfileHeader extends Component {
         }
     }
 
+    // Allows liking functionality
     followFunctionality = () => {
         let nonActiveUserFriends;
             if (this.props.friends == undefined) {

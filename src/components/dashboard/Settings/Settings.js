@@ -1,8 +1,9 @@
+/*
+    File Description: KEY Settings menu component.
+*/
+
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import settingsIcon from '../../../assets/icons/settings.svg'
-import closeIcon from '../../../assets/icons/close-outline.svg'
-import ButtonToggle from '../../library/Buttons/ButtonToggle';
 import Friends from './Friends'
 import SettingsBlock from './SettingsBlock'
 import ProfileSettings from './ProfileSettings'
@@ -90,10 +91,12 @@ class Settings extends Component {
         changes: undefined
     }
 
+    // Toggles showing the settings popup
     activateSettings = () => {
         this.setState({isActive: !this.state.isActive});
     }
 
+    // Allows user to log out from the system
     logOut = () => {
         window.localStorage.clear();
         window.location.href = '/onboarding';

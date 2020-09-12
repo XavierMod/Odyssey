@@ -1,9 +1,12 @@
+/*
+    File Description: Creates all possible types of buttons.
+    Notes: LIBRARY component. 
+*/
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
 import { odysseySettings } from '../../../config/theme';
-
 import facebookLogo from '../../../assets/icons/facebook.svg';
 import emailLogo from '../../../assets/icons/email.svg';
 import googleLogo from '../../../assets/icons/google.svg';
@@ -98,6 +101,7 @@ const DIV = styled.div`
     }
 `;
 
+// Depending on props, different buttons will be sent
 const Button = ( props ) => {
 
     const getImage = () => {

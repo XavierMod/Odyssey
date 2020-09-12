@@ -1,3 +1,8 @@
+/*
+    File Description: Component used to render profile pages.
+    Notes: TEMPLATE. 
+*/
+
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import ProfileHeader from '../components/dashboard/Profile/ProfileHeader';
@@ -7,8 +12,7 @@ import axios from 'axios'
 import NoMorePosts from '../components/dashboard/Profile/NoMorePosts'
 import UserToken from '../services/UserToken';
 
-const ProfileWrapper = styled.div`
-`;
+const ProfileWrapper = styled.div``;
 
 class ProfileTemplate extends Component {
     constructor(props) {
@@ -33,7 +37,6 @@ class ProfileTemplate extends Component {
     }
 
     render() {
-        console.log('FROM PROFILETEMPLATE', this.props.data)
         return (
             <ProfileWrapper>
                     <ProfileHeader isActiveUser={this.state.isActiveUser} postsLength={this.state.posts.length} {...this.props.data} />

@@ -1,5 +1,10 @@
 
-//Takes an object and checks if all fields have a minimum length of 5 characters
+/*
+    File Description: Validates form services.
+    Notes: KEY helper / service. 
+*/
+
+// Takes an object and checks if all fields have a minimum length of 5 characters
 export const checkEmptyFields = (obj) => {
     var keysArr = [];
     Object.keys(obj).forEach((key, ind) => {
@@ -12,7 +17,7 @@ export const checkEmptyFields = (obj) => {
     return keysArr.every(x => x);
 }
 
-//
+// Validates Email inputs
 export const validateEmail = ( string ) => {
     var email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 

@@ -1,3 +1,9 @@
+/*
+    File Description: Creates Google Sign in button.
+    Notes: LIBRARY component.
+    Status: BACK-END IMPLEMENTATION NOT YET FINISHED. 
+*/
+
 import React, { Component } from 'react';
 import styled from 'styled-components';
 

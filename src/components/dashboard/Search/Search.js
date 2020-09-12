@@ -1,15 +1,18 @@
+/*
+    File Description: KEY Search engine component.
+    Notes: KEY component. 
+*/
+
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
-import MainTitle from '../../library/Styles/MainTitle';
 import {odysseySettings} from '../../../config/theme';
-import Logo from '../../library/Logo';
 import AccountResults from './AccountResults';
 import axios from 'axios'
 import UserToken from '../../../services/UserToken'
 import PostsResults from './PostsResults';
 import HeaderLogo from '../../library/Headers/HeaderLogo';
 
+// Defining component styles
 
 const SearchWrapper = styled.div`
     text-align: left;
@@ -99,10 +102,12 @@ class Search extends Component {
         }
     }
 
+    // When the user types, the values get stored in the component state
     onChange = (el) => {
         this.setState({query: el.target.value});
     }
 
+    // When a user clicks the search button, this function will be executed. It calls the backend and returns information based on what the user wants to search.
     getResults = () => {
         if (this.state.activated == 'Posts') {
             let formData = new FormData();
@@ -125,6 +130,8 @@ class Search extends Component {
         }
     }
 
+    // Switch between searching posts or accounts
+    // FIXES A SMALL BUG
     activateOption = (option) => {
         if (option.target.textContent === 'Posts') {
             this.setState({activated: 'Accounts'})
@@ -133,6 +140,7 @@ class Search extends Component {
         }
     }
 
+    // After the main component renders, this call gets the current active user name. 
     componentDidMount() {
         let formData = new FormData();
         formData.append("content", UserToken('get'));
@@ -143,6 +151,7 @@ class Search extends Component {
         })
     }
 
+    // Renders either posts or accounts, depending on the state
     renderOptions = () => {
         if (this.state.activated == 'Posts') {
             return <AccountResults renderQuery={this.state.resultsPosts} />

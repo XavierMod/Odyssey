@@ -1,6 +1,11 @@
+/*
+    File Description: Main component that wrapps the onboarding journey.
+    Notes: Part of the ONBOARDING JOURNEY. 
+*/
+
+
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-
 import styled from 'styled-components';
 import HeaderLogo from '../library/Headers/HeaderLogo';
 import Button from '../library/Buttons/Button';
